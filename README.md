@@ -9,15 +9,36 @@ Section 2:
 ```html
 <h1></h1> .... <h6></h6>
 ```
-- Paragraph Element: <p></p>
+- Paragraph Element:
+```html
+<p></p>
+```
 - Self Closing Tags: Void Elements*
-  - Horizontal Rule ~ <hr/>
-  - Single Line Break ~ <br/>
+  - Horizontal Rule ~
+    ```html
+    <hr/>
+    ```
+  - Single Line Break ~
+    ```html
+    <br/>
+    ```
 
 Section 3:
-- Unordered List: <ul> <li></li> </ul>
-- Ordered List: <ol> <li></li> </ol>
+- Unordered List:
+```html
+<ul> <li></li> </ul>
+```
+- Ordered List:
+```html
+<ol> <li></li> </ol>
+```
 - Nested List: Indentation is important*
-- Anchor Element: <a href="insert URL">Title</a>
-  - <tag [attribute1] [attribute2]></tag>
-- Image Element: <img src="URL" alt="Description"/> ~ Void Elements*
+- Anchor Element:
+```html
+<a href="insert URL">Title</a>
+<tag [attribute1] [attribute2]></tag>
+```
+- Image Element:
+```html
+<img src="URL" alt="Description"/> ~ Void Elements*
+```
