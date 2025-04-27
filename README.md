@@ -6,7 +6,9 @@ This repo is for strengthening my full-stack web development skills and showcasi
 -----------------------------
 Section 2:
 - Heading Element:
-    <h1></h1> .... <h6></h6>
+```html
+<h1></h1> .... <h6></h6>
+```
 - Paragraph Element: <p></p>
 - Self Closing Tags: Void Elements*
   - Horizontal Rule ~ <hr/>
