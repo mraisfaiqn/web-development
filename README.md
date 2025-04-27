@@ -42,3 +42,25 @@ Section 3:
 ```html
 <img src="URL" alt="Description"/> ~ Void Elements*
 ```
+
+Section 4:
+- Absolute File Paths: /home/morafa/Desktop/Web Development Projects/Resources/Section 4
+- Relative File Paths: ../Section 3 ~ Search a level up | ./Section 2 ~ Search within the same directory
+- Interesting find: Nested tags?
+```html
+<a><img/></a>
+```
+- HTML Boilerplate:
+```html
+<!DOCTYPE html> ~ File version declaration | HTML5
+<html lang="en"> ~ Opening tag with an english language attribute
+  <head> ~ Head element to help website render behind the scene
+    <meta charset="UTF-8"> ~ Character set to display (meta) in the website
+    <title>My Website</title> ~ Title to display in tab
+  </head>
+
+  <body> ~ Content container
+    <h1>Hello World!</h1> ~ Insert website content
+  </body>
+</html> ~ Closing tag
+```
