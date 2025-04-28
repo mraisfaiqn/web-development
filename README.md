@@ -63,3 +63,46 @@ Section 4:
   </body>
 </html> ~ Closing tag
 ```
+
+Section 5:
+- HTML: Hypertext Markup Language*
+- CSS: Cascading Style Sheets*
+- SASS: Synthetically Awesome Style Sheets
+- LESS: Leaner Cascading Style Sheets
+```
+  - Inline: <tag style="css" />
+    - <html style="background: blue"></html> ~ Applied to a single element (Not recommended overall, only use it for specific)
+  - Internal: <style>css</style> ~ Can be applied to to multiple targets within a single HTML page
+    - <html>
+        <head>
+          <style>
+            html{ ~ Selector (html: entire page; h1: ONLY h1 tags; )
+              background:red; ~ CSS Code
+            }
+          </style>
+        </head>
+      </html>
+  - External: <link href="style.css"/>
+    - Separate file imported into multiple HTML pages
+    - <html>
+        <head>
+          <link 
+            rel="stylesheet" ~ Relationship
+            href="./styles.css" ~ Location
+          />
+        </head>
+      </html>
+    - html{
+        background: green;
+      }
+```
+- Selectors:
+  - tag ~ h1, p, a etc.
+  - class ~ .class etc. ~ Can be applied to multiple elements
+  - id ~ #id etc. ~ Can only be applied to one element in a single HTML file
+  - Attribute selector
+    - <tag id=value class=value draggable=value src=value href=value alt=value></tag>
+    - p[draggable] { color:red; } ~ Only draggable paragraphs will be affected
+    - p[draggable="false"]{ color:red; } ~ Only false draggable paragraphs will be affected
+    - *{ color:red; } ~ Universal selector applies to all elements
+  - Note image height/width attribute, HTML value = "200"; CSS value : 200px
