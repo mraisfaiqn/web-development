@@ -106,3 +106,23 @@ Section 5:
     - p[draggable="false"]{ color:red; } ~ Only false draggable paragraphs will be affected
     - *{ color:red; } ~ Universal selector applies to all elements
   - Note image height/width attribute, HTML value = "200"; CSS value : 200px
+
+Section 6:
+- Color properties: Name colors ~ Antiquewhite; Hex code ~ #FAF8F1
+- Font size: 1px ~ Pixel (1/96th inch|0.26mm); 1pt ~ Point (1/72nd inch|0.35mm; 1em ~ M (100% of parent); 1rem ~ Relative (100% of root); xx-large
+- Font weight: normal/bold ~ Keywords; lighter(-100)/bolder(+100) ~ Relative to parent; 100-900 ~ number
+- Font family: Helvetica(Typeface), sans-serif(backup generic font type); "Times New Roman", serif
+- Text alignment: text-align: left, right, center, justify
+- Important CSS Concept ~ Box Model: height, width, margin, padding, border
+- Margin properties: Affects elements externally (4 values - clockwise) ... 0px~top/bottom 20px~left/right (2 values)
+  - margin: 10px ~pushes outward from the border
+- Padding properties: Affects elements internally (4 values - clockwise) ... 0px~top/bottom 20px~left/right (2 values)
+  - padding: 20px ~pushes outward between the element and the border
+- Border properties: (4 values - clockwise) ... 0px~top/bottom 20px~left/right (2 values)
+  - border: 10px~thickness solid~style black~color; (border property projects outwards and your element remains unchanged)
+  - border-top: 0px;
+  - border-width: 0px~top 10px~right 20px~bottom 30px~left; 
+- Content division element:
+  ```
+  <div></div>
+  ```
