@@ -119,7 +119,7 @@ Section 6:
 - Padding properties: Affects elements internally (4 values - clockwise) ... 0px-top/bottom 20px-left/right (2 values)
   - padding: 20px ~pushes outward between the element and the border
 - Border properties: (4 values - clockwise) ... 0px-top/bottom 20px-left/right (2 values)
-  - border: 10px~thickness solid~style black~color; (border property projects outwards and your element remains unchanged)
+  - border: 10px-thickness solid-style black-color; (border property projects outwards and your element remains unchanged)
   - border-top: 0px;
   - border-width: 0px-top 10px-right 20px-bottom 30px-left; 
 - Content division element:
