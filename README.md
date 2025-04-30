@@ -114,14 +114,14 @@ Section 6:
 - Font family: Helvetica(Typeface), sans-serif(backup generic font type); "Times New Roman", serif
 - Text alignment: text-align: left, right, center, justify
 - Important CSS Concept ~ Box Model: height, width, margin, padding, border
-- Margin properties: Affects elements externally (4 values - clockwise) ... 0px~top/bottom 20px~left/right (2 values)
+- Margin properties: Affects elements externally (4 values - clockwise) ... 0px-top/bottom 20px-left/right (2 values)
   - margin: 10px ~pushes outward from the border
-- Padding properties: Affects elements internally (4 values - clockwise) ... 0px~top/bottom 20px~left/right (2 values)
+- Padding properties: Affects elements internally (4 values - clockwise) ... 0px-top/bottom 20px-left/right (2 values)
   - padding: 20px ~pushes outward between the element and the border
-- Border properties: (4 values - clockwise) ... 0px~top/bottom 20px~left/right (2 values)
+- Border properties: (4 values - clockwise) ... 0px-top/bottom 20px-left/right (2 values)
   - border: 10px~thickness solid~style black~color; (border property projects outwards and your element remains unchanged)
   - border-top: 0px;
-  - border-width: 0px~top 10px~right 20px~bottom 30px~left; 
+  - border-width: 0px-top 10px-right 20px-bottom 30px-left; 
 - Content division element:
   ```
   <div></div>
