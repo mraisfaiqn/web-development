@@ -126,3 +126,43 @@ Section 6:
   ```
   <div></div>
   ```
+
+Section 7:
+- Internal styling cascades into inline styling, hence inline has the last position*
+- Position (in code) > Specificity (element>class>attribute>id) > Type (external>internal>inline) > Importance (keyword: !important;)
+- Combine CSS Selectors:
+  - Group rule:
+    ```
+    selector,selector {
+      color:blueviolet;
+    }
+    ```
+  - Child rule: 1 generation deep*
+    ```
+    selector > selector {
+      color: firebrick;
+    }
+    ```
+  - Descendant rule:
+    ```
+    selector selector {
+      color: blue;
+    }
+    ```
+  - Chaining rule:
+    ```
+    selectorselector {
+      color: seagreen;
+    }
+    ```
+  - Combining rules:
+    ```
+    selector selectorselector {
+      fonts-size: 0.5rem;
+    }
+    ```
+- Positioning: (top,left,right,bottom)
+  - Static: HTML default flow
+  - Relative: Position relative to default position
+  - Absolute: Postion relative to nearest positioned ancestor or top left corner of webpage (Z-index: This is to determine which which element layers ontop or below with initial default value being 0
+  - Fixed: Position relative to top left corner of browser window
