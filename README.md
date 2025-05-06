@@ -164,5 +164,140 @@ Section 7:
 - Positioning: (top,left,right,bottom)
   - Static: HTML default flow
   - Relative: Position relative to default position
-  - Absolute: Postion relative to nearest positioned ancestor or top left corner of webpage (Z-index: This is to determine which which element layers ontop or below with initial default value being 0
+  - Absolute: Postion relative to nearest positioned ancestor or top left corner of webpage (Z-index: This is to determine which element layers ontop or below with initial default value being 0
   - Fixed: Position relative to top left corner of browser window
+
+Notes: 
+- Inspect > Three dots > More tools > CCS Overview > Obtain colour palettes
+- Inspect > Search for the element > Right-click on the element > Copy selector > Obtain selector combination
+
+Section 8:
+- Display properties:
+  - By default the element takes up the entire width web page
+  - Another type of element is called Span
+    - Span element by default has a different value for its display property: inline
+    ```
+      <p>Hello<span> Beautiful</span> World</p>
+    ```
+  - Block: By default most elements are set to this value - Full-width of the webpage
+    ```
+      h2 {display: block;}
+    ```
+  - Inline: Elements will display inline with each other
+    - Can't set the width and height becasue default is size of content
+    ```
+      h2 {display: inline;}
+    ```
+  - Inline-block: Hybrid element which allows a mixture of inline and block
+    - Ability to set height and width of elements
+    ```
+      h2 {display: inline-block;}
+    ```
+  - None: This makes any element on the screen dissapear e.g Checklist or button dynamics
+    ```
+      h2 {display: none;}
+    ```
+- Float property: Allows us to format images wrap text around an element
+  ```
+    img {float: left;} OR img {float: right;}
+  ```
+  - To leave space between body and footer:
+    ```
+      footer {clear: left;} OR footer: {clear: right;} OR footer: {clear: both;}
+    ```
+- Webpage Responsiveness: 4 ways to achieve similar results
+  Note:
+  ** I've noticed that when responsiveness is needed, another meta tag is added
+  ** Test resposiveness; Inspect > CSS overview > Top left second widow tab > Manipulate window sizes based on real products
+  ```
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+  ```
+  - Media Queries:
+    ```
+      @media (max-width: 600px) { /*CSS for screens below or equal to 600px wide*/}
+      OR
+      @media (min-width: 600px) { /*CSS for screens above or equal to 600px wide*/}
+      OR
+      @media (max-width: 600px) and @media (min-width: 900px) { /*CSS for screens above or equal to 600px wide*/}
+      OR
+      @media screen(orientation: landscape){ /*Styles for landscape orientation*/}
+      OR
+      @media print(orientation: landscape){ /*Styles for landscape orientation*/}
+      ...
+      Refer to docs for more types of media queries
+    ``` 
+  - CSS Grid: 2D Layout - Columns AND Rows
+    ```
+      <div class="grid-container">
+        <div class="first card"></div>
+        <div class="card"></div>
+        ...
+      </div>
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; - fraction or pixels: flexible way to create equal widths essentially 2 columns
+        grid-template-rows: 100px 200px 200px:
+        gap: 30px; - between columns and rows
+      }
+
+      .first {
+        grid-column: span 2; - full width of the this 2 column grid
+      }
+
+      .card {
+        background-color: blue;
+      }
+    ```
+  - CSS Flexbox: 1D Layout - Horizontal OR Vertical plane
+    ```
+      <div class="flex-container">
+        <div class="first card"></div>
+        <div class="second card"></div>
+        <div class="card"></div>
+        ...
+      </div>
+
+      .flex-container {
+        display: flex;
+        flex-driection: column; OR flex-direction: row;
+      }
+    
+      .card {
+        background: blue;
+        border: 30px solid white;
+        height: 100px;
+        flex: 1; - divide each of the cards into equal width
+      }
+    
+      .first {
+        flex: 2; - twice the width of normal card classes
+      }
+
+      .second {
+        flex: 0.5; - half the width of normal card classes
+      }
+      
+    ```
+  - External Framework i.e Bootstrap: Not built-in to CSS, integrated into code (Built ontop of Flexbox)
+    - 12 division system
+    - Full width of a webpage divided into 12 equal portion: col-6 equals to half of the page etc.
+    - Styling can be brought in easily into CSS using some of the pre-build bootstrap components
+    ```
+      <div class="container">
+        <div class="row">
+          <div class="card col-6">
+            Card
+          </div>
+          <div class="card col-2">
+            Card
+          </div>
+          <div class="card col-4">
+            Card
+          </div>
+        </div>
+      </div>
+          
+  
+    
+  
