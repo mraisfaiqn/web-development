@@ -297,7 +297,43 @@ Section 8:
           </div>
         </div>
       </div>
-          
-  
-    
-  
+    ```
+
+Section 9:
+- Create a table in HTML: Only use when semantically creating a table e.g. Represent tabular data like "How many car tyres have you sold" OR "How many visitors you had in May"
+- Do not use this when styling your web page in a table layout, there are much better tools
+  ```
+    <table>
+      <tr class="row"> - Table row
+        <td class="col1"></td> - Table data
+      </tr>
+    </table>
+  ```
+- You can use display inline-blocks, but can cause some issues
+- You can use position absolute, but its inflexible layout as soon as another element is not absolute
+- MOST RELIED ON, is the float tool but its also kind of hacky
+  - Only use float when wrapping text around an image
+- Use tools like FlexBox, Grid OR Bootstrap when laying out an OVERALL PAGE STRUCTURE.
+- FlexBox:
+  - It does not abide by the same rules as the other display set {inline, inline-block, block}
+  - Flex display: Flex (Full width of webpage) / Inline-flex (Follows size of content)
+  - Flex direction: Row (Default: main-axis) / Column (cross-axis)
+  - Flex basis: Setting the width/height based on the axis its on
+  - 
+  ```
+    <div class="container">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="three"></div>
+    </div>
+
+    .container {
+      display: flex; OR display: inline-flex;
+      flex-direction: row OR column
+      gap: 10px;
+    }
+
+    * {
+      flex-basis: 100px - Only applied to the children of the container
+    }
+  ```
