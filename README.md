@@ -317,9 +317,32 @@ Section 9:
 - FlexBox:
   - It does not abide by the same rules as the other display set {inline, inline-block, block}
   - Flex display: Flex (Full width of webpage) / Inline-flex (Follows size of content)
-  - Flex direction: Row (Default: main-axis) / Column (cross-axis)
+  - Flex direction: Row (Default: main-axis -left/right; cross-axis -top/bottom) / Column (main-axis -top/bottom; cross-axis -left/right)
   - Flex basis: Setting the width/height based on the axis its on
-  - 
+  - Flex layout: Align, Justify and Wrap
+    - Order property: Order of the child item (Default - order: 0;)
+    - Wrap property: Useful when you run out of space on the HORIZONTAL (Default - flex-wrap: nowrap;)
+      - nowrap
+      - wrap
+      - wrap-reverse
+    - Justify Content property: Justify content sets the distribution in the container along the main-axis
+      - flex-start
+      - flex-end
+      - center
+      - space-between
+      - space-around
+      - space-evenly
+    - Align Items property: Position of the item on its cross-axis, applied to the container with flex-wrap set to nowrap and given a viewport height (height: 70vh;)
+      - flex-start
+      - flex-end
+      - center
+      - baseline
+      - stretch
+    - Note:
+      - You can access individual items and align it individually using the align-self property (align-self: flex-start;)
+    - Align Content property: Position of the item on its cross-axis, applied to the container with flex-wrap set to wrap and given a viewport height (height: 70vh;)
+  - Flex sizing:
+    -
   ```
     <div class="container">
       <div class="one"></div>
@@ -329,11 +352,20 @@ Section 9:
 
     .container {
       display: flex; OR display: inline-flex;
-      flex-direction: row OR column
+      flex-direction: row; OR column;
+      flex-wrap: nowrap; OR flex-wrap: wrap; Or flex-wrap: wrap-reverse;
+      justify-content: flex-start;
+      alignt-items: flex-start;
+      height: 70vh;
       gap: 10px;
     }
 
     * {
       flex-basis: 100px - Only applied to the children of the container
+    }
+
+    .one {
+      order: 1; - Brings this element to end of the container as its the highest value to all other defaulting to zero
+      align-self: flex-start;
     }
   ```
