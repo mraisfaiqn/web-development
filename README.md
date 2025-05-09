@@ -340,9 +340,16 @@ Section 9:
       - stretch
     - Note:
       - You can access individual items and align it individually using the align-self property (align-self: flex-start;)
+      - Flex-direction and Flex-wrap combined becomes Flex-flow: column/row wrap/nowrap/wrap-reverse
     - Align Content property: Position of the item on its cross-axis, applied to the container with flex-wrap set to wrap and given a viewport height (height: 70vh;)
+      - flex-start
+      - flex-end
+      - center
+      - space-between
+      - space-around
+      - stretch
   - Flex sizing:
-    -
+    
   ```
     <div class="container">
       <div class="one"></div>
