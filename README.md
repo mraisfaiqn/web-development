@@ -348,8 +348,23 @@ Section 9:
       - space-between
       - space-around
       - stretch
-  - Flex sizing:
-    
+  - Flex sizing: Shrinking and Growing
+    - Content width (Default) < Width (Set) < flex-basis (Default: auto) < min-width/max-width (Default: Width of the longest word/Width for all text to display on a sigle line)
+    - flex-grow/flex-shrink (Default: 0/1)
+      ```
+      display: flex;
+      gap: 10px;
+
+      item 1 {
+        width: 100px;
+        flex-basis: 200px;
+        max-width: 100px;
+        min-width: 300px;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex: 1 1 0; OR flex: 1 [grow shrink basis]
+      }
+      ``` 
   ```
     <div class="container">
       <div class="one"></div>
