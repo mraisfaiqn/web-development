@@ -391,3 +391,68 @@ Section 9:
       align-self: flex-start;
     }
   ```
+
+Section 10:
+- CSS Grid allow us to create complex a 2D Layout System
+- Difference between Flexbox AND Grid:
+  - Flexbox is a tool that helps align content along a 1D line
+  - Grid is a tool to align content along a 2D grid
+  - It is possible to combine both Flexbox + Grid together vice-versa Grid + Flexbox
+  - Grids take up the whole width of the page but only uses the max amount of height based on the content to fit
+  ```
+    <div class="container">
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
+    </div>
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr; - Fractional ratio 1:2
+      grid-template-rows: 1fr 1fr; - Fractional ratio 1:1 (Equal height)
+      gap: 10px;
+    }
+  ```
+- Grid Sizing: Size of columsn and rows
+  - Note if you create a larger grid than the amount of items specified, the items will be fitted from top-left to bottom-right
+  - Note if you create a smaller grid that the amount of items specified, the extra item will follow the existing column width and will fit to row content
+  - Note you can set the sizing for future items to control styling in the container, eg. grid-auto-rows: 300px
+  - We can use chrome dev tools to inspect the grid in more detail: F12 > Elements > Grid container > Layout tab
+  ```
+    <div class="container">
+      <div class="grid-item">1</div>
+      <div class="grid-item">2</div>
+      <div class="grid-item">3</div>
+      <div class="grid-item">4</div>
+    </div>
+
+    .container {
+      display: grid;
+      grid-template-columns: 400px 800px; - Fixed sized grid is not responsive
+      grid-template-rows: 100px 200px; OR 100pc auto; - Auto is going to be slightly resposive (Each column is going to fit 100% width to its available space, Each row is going to fit to content)
+      grid-template: 100px 200px / 400px 800px; - Rows / Columns [SHORTHAND]
+      grid-template-columns: 1fr 2fr; - Fractional sizing (Best*)
+      grid-template-columns: 200px minmax(400px,800px); - MinMax sizing
+      grid-template-columns: repeat(2, 200px); - Repeat sizing (How many columns, Size of each columns)
+      grid-auto-rows: 300px;
+    }
+  ```
+- Grid Placement: How to layout items in the grid
+  - Items created in rows and columsn are called Tracks
+  - Grid cells are the smallest unit that sit between the columsn and rows
+  - Grid lines are the separations between tracks (controlled using the gap property)
+  - Attributes that contribute to a grid placement:
+    - Lines
+    - Tracks
+    - Cells
+    - Container
+    - Items
+  - Properties:
+    - grid-column: span 2; - Span 2 columns horizontally
+      - Shorthand for grid-column-start: 1; grid-column-end: -1;
+    - grid-cow: span 3; - Span 3 rows vertically
+      - Shorthand for grid-row-start: 1; grid-row-end: -1;
+    - order: 1; - Shifts item to furthest end of the grid
+    - You can also just define all its start and end instead of using order
+      - grid-area: 2 / 1 / 3 / 3 (grid-row-start / grid-column-start / grid-row-end / grid-column-end
+  - Note Grid allows you to overlay items ontop of each other
