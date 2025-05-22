@@ -456,3 +456,75 @@ Section 10:
     - You can also just define all its start and end instead of using order
       - grid-area: 2 / 1 / 3 / 3 (grid-row-start / grid-column-start / grid-row-end / grid-column-end
   - Note Grid allows you to overlay items ontop of each other
+
+Section 11:
+- Bootstrap is one of many CSS External Layout Systems, most popular
+- Simple class pre-built codes, with a 12 column layout system built ontop of Flexbox
+- Mobile first approach > Desktop
+```
+  <ul class="[nav nav-pills]">
+    <li>
+      <button class="[nav-link active rounded-5]">Home</button>
+    </li>
+  </ul>
+```
+- Opensource CSS Framework:
+  - Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+  - Foundation
+  - MUI
+  - Tailwind
+- Use Bootstrap when creating:
+  - Mobile first responsive websites
+  - Simple quick websites
+  - NOT complex full control projects
+- To use it:
+  - Include the CDN link (Content Delivery Network) into <head>
+  ```
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  ```
+  - Include the Script for functionality just before </body>
+  ```
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+  ```
+  - Note: If you want to use your OWN stylesheet make sure to add it after the bootstrap link in the header
+  ```
+    <link rel="stylesheet" href="./css/style.css">
+  ```
+- Bootstrap Layout: 12 column layout system
+  - 3 components: div of class container > div of class row > div items laid out using the column class system
+  - Auto spacing distribution, spans the width of the entire container
+  ```
+    <div class="container">
+      <div class="row">
+        <div class="col">Hello</div>
+      </div>
+    </div>
+  ```
+  - Screen size class and their breakpoints:
+    - .container | < 576px (Foldable phone/Narrow phone screens)
+    - .container-sm | >= 576px (Mobile)
+    - .container-md | >= 768px (Tablets/IPads)
+    - .container-lg | >= 992px (Laptop)
+    - .container-xl | >= 1200px (Desktop)
+    - .container-xxl | >= 1400px (TV)
+    - .container-fluid | All sizes
+    - Most popular: .container (nice margins) & .container-fluid (edge-edge behaviour)
+  - Sized columns: col-2 | col-4 | col-6 OR col-2 | col-10
+  ```
+    <div class="container">
+      <div class="row">
+        <div class="col-2">Hello</div>
+        <div class="col-4">Hello</div>
+        <div class="col-6">Hello</div>
+      </div>
+    </div>
+  ```
+  - In a div you can also have multiple breakpoints:
+    - col-sm-12 col-md-8 col-lg-4 |:
+      - Large device and above, take up 4/12 of the width
+      - Medium device, take up 8/12 of the width
+      - Small device, take up 12/12 full width
+  - Mix and Match:
+    - col-2 | col-4 | col
+    - col-6 col-md-4 col-6 |
+  -  
