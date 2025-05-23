@@ -527,4 +527,5 @@ Section 11:
   - Mix and Match:
     - col-2 | col-4 | col
     - col-6 col-md-4 col-6 |
-  -  
+  - Note: When working with responsiveness, use Chrome Inspector > Toggle device toolbar (Ctrl+Shift+M)
+- Bootstrap Components: Pre-built and pre-styled components by adding a bootstrap class
