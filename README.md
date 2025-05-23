@@ -529,3 +529,27 @@ Section 11:
     - col-6 col-md-4 col-6 |
   - Note: When working with responsiveness, use Chrome Inspector > Toggle device toolbar (Ctrl+Shift+M)
 - Bootstrap Components: Pre-built and pre-styled components by adding a bootstrap class
+  - Bootstrap examples | https://getbootstrap.com/docs/5.3/examples/
+  - Bootstrap icons | https://icons.getbootstrap.com/
+  - Easily build well thought out designed websites
+- Bootstrap Spacing:
+  - {property}{sides}-{size} for xs
+  - {property}{sides}-{breakpoint}-{size} for sm, md, lg, xl and xxl
+  - Property:
+    - m - margin
+    - p - padding
+  - Sides:
+    - t - top
+    - b - bottom
+    - s - start ?
+    - e - end ?
+    - x - left/right ?
+    - y - top/bottom ?
+  - Size:
+    - 0 ... 5
+    - auto
+- Bootstrap Darkmode:
+  ```
+    <html lang="en" data-bs-theme="dark">
+  ```
+- Note: Google has lots of FREE Bootstrap Themes
