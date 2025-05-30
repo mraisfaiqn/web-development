@@ -553,3 +553,49 @@ Section 11:
     <html lang="en" data-bs-theme="dark">
   ```
 - Note: Google has lots of FREE Bootstrap Themes
+
+Section 12:
+- Web Design:
+  - You only have 3seconds to set a good impression
+  - Web Design Principles:
+    - Colour Theory
+      - Art/Science of creating the perfect colour palette for your website
+      - Consistency
+      - Mood (Red:Love|Energy|Intensity; Yellow:Joy|Intellect|Attention; Green:Freshness|Growth|Safety; Blue:Stability|Trust|Serenity; Purple:Royalty|Wealth|Femininity)
+      - Combining Colours: Use Adobe Colour Wheel / Colour Hunt
+        - Analogous Colours: Selecting 2 colours next to each other on the colour wheel
+        - Complementary Colours: Selecting 2 colours opposite of each other on the colour wheel
+        - Triadic colour palette
+        - Perfect square
+        - etc.
+    - Typography: Readibility & Legibility (Open shapes | Ample intercharacter spacing | Unambiguous forms | Varying proportions)
+      - Serif | Stable(Minion Pro)/Authoritative(Trajan)/Respectable(Baskerville)
+        - Old Style/Traditional/Modern
+      - San-Serifs | Sensible(Helvetica)/Simple(Avenir)/Straighforward(Din)
+      - Script | Personal(Freestyle Script)/Creative(Adios Script Pro)/Elegant(Snell Roundhand)
+      - Display | Friendly(Vag Rounded)/Loud(Gin)/Amusing(Thirsty Rough)
+      - Modern | Stylish(Snackers Gothic)/Chic(Gotham)/Smart(Futura)
+      - Note: Stick to 2 fonts per design with similar Mood and Time Era OR Contrast between heading and body by changing Serif-ness or Weights
+    - User Interface Design
+      - Hierarchy: More important information is displayed first
+        - Colours
+        - Size
+        - Font weights
+      - Layout
+        - Optimal line length: 40-60 chars per line
+      - Alignment:
+        - Positioning of elements on the screen
+        - Reduce the number of alignment points
+      - White Space: Empty space around your element or text
+        - Adding more white space elevates your design for that minimalist look
+      - Audience: Design based on your audience
+    - User Experience Design: Invisible, effortless
+      - Simplicity
+      - Consistency
+      - Readibility: F-layout/Z-layout
+      - All-platform design: Mobile responsive
+      - Reduce banners/warnings/cookies
+      - Reduce scrolling effort
+      - Test > Test > Test
+      - Dont use powers of evil: Dark Patterns (Tricking your customers to do an action)
+        
