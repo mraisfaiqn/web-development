@@ -598,4 +598,90 @@ Section 12:
       - Reduce scrolling effort
       - Test > Test > Test
       - Dont use powers of evil: Dark Patterns (Tricking your customers to do an action)
-        
+
+Section 13:
+- Created my own personal website
+
+Section 14:
+- Introduction to Javascript
+- Data type:
+  - String
+  - Numbers
+  - Boolean
+- Popup:
+  ```
+  alert("Hello");
+  ```
+- Type Of:
+  ```
+  typeof(123); > Number
+  ```
+- Prompt:
+  ```
+  prompt("What is my name?");
+  ```
+- Variables:
+  ```
+  var myname = "Faiq";
+  ```
+- Console Log:
+  ```
+  console.log(var);
+  ```
+- Naming Conventions:
+  - Give variables meaningful names
+  - Avoid keywords
+  - No leading numbers
+  - No spaces
+  - Allowed char symbols: $ | _
+  - Camel casing: myName | camelCasing | userScoreFinal
+- String Concatenation:
+  - Combining chars together to create a string > "a" + "b" = ab | "a " + "b" = a b
+- String Length and Number of chars:
+  ```
+  var.length;
+  ```
+- Slice Function:
+  ```
+  var.slice(x,y);
+  ```
+- Format Casing:
+  ```
+  var.toUpperCase();
+  var.toLowerCase();
+  ```
+- Arithmetic and Modulo Operator
+  ```
+  Add +
+  Subtract -
+  Divide /
+  Multiply *
+  Modulo %
+  ```
+- Increment and Decrement Expressions:
+  ```
+  var x = 5;
+  x = x + 1; OR x += 1; OR x ++; (-=|*=|/=|%=)
+
+  Note:
+  var x = 3;
+  var y = x++; - y = 3 NOT 4
+  ```
+- Functions and Parameters and Arguments:
+  ```
+  function robotMove(direction){
+    alert(direction);
+  }
+- Round down and up:
+  ```
+  Math.floor(number);
+  Math.ceil(number);
+  ```
+- Output and Return values:
+  ```
+  function robotMove (direction){
+    location += direction;
+    return (location);
+  }
+  ```
+  
