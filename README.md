@@ -599,11 +599,13 @@ Section 12:
       - Test > Test > Test
       - Dont use powers of evil: Dark Patterns (Tricking your customers to do an action)
 
-Section 13:
-- Created my own personal website
+Section 13: Build my own personal website
+- Still need to strengthen positioning techniques and colour gradient application
 
-Section 14:
-- Introduction to Javascript
+Section 14: 
+- Javascript > ECMA Script standard
+- Interpreted languages: Javascript | Python | Ruby
+- Compiled languages: Java | c/c++ | Swift
 - Data type:
   - String
   - Numbers
