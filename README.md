@@ -686,4 +686,82 @@ Section 14:
     return (location);
   }
   ```
-  
+
+Section 15:
+- Random number generator
+```
+var n = Math.random()
+```
+- Love calculator example:
+```
+prompt("Enter your name:");
+prompt("Enter your partners name:");
+function love_calculator (name1, name2) {
+    var loveScore = Math.random();
+    loveScore = Math.floor((loveScore * 100)+1);
+    return loveScore
+}
+
+var y = love_calculator("M","B");
+console.log(y);
+alert("Your love score is " + y + "%");
+```
+- Relational statements: (>, <, >=, <=)
+- Conditional statements: (===, !==)
+  - Note: === - Strict equality; == - Loose equality; && - AND Operator; || - OR Operator; ! - NOT Operator
+```
+if (y === 100) {
+    alert("Your love score is " + y + "% " + "~ WOOWWZERS!");
+} else if (y > 70 && y < 100){
+    alert("Your love score is " + y + "% " + "~ Amazing!");
+} else if (y > 40 && y < 70){
+    alert("Your love score is " + y + "% " + "~ MEHHH!");
+}else {
+    alert("Your love score is " + y + "% " + "~ Ouchh!");
+}
+```
+- Arrays:
+  - output.push(): Insert element into array;
+  - output.pop(): Remove element form array;
+```
+var guessName = prompt("What are you");
+var guessList = ["A", "B", "C", "D", "E", "F"];
+var quantity = guessList.length;
+var including = guessList.includes(guessName);
+if (including === true) {
+    alert("Welcome")
+} else {
+    alert("Sorry, next time")
+}
+```
+- Control statements:
+  - While loop
+  ```
+  var i = 1;
+  while (i < 2) {
+    console.og(i);
+    i++;
+  }
+  ```
+  - For Loop
+  ```
+  for (let i = 0; i < 10; i++) {
+    console.og(i);
+  }
+  ```
+- Fibonacci Sequencing:
+```
+function fib(n) {
+    if (n === 1) {
+        output = [0];
+    } else if (n === 2) {
+        output = [0, 1];
+    } else {
+        var output = [0,1];
+        for (var i = 2; i < n; i++) {
+            output.push(output[i-2] + output[i-1]);
+        }
+    }
+    return output;
+}
+```
