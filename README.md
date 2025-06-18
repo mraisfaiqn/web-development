@@ -783,6 +783,13 @@ Section 16:
     </script>
   </body>
   ```
+  - External:
+  ```
+  <body>
+    <h1>Hello</h1>
+    <script src="./index.js" charset="UTF-8"></script>
+  </body>
+  ```
 - Document Object Model (DOM):
   - HTML code mapped out into a tree diagram
   - Example object: Car
