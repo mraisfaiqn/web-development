@@ -765,3 +765,75 @@ function fib(n) {
     return output;
 }
 ```
+
+Section 16:
+- Adding Javascript:
+  - In-line:
+  ```
+  <body onload="alert('Hello');">
+  </body>
+  ```
+  - Internal:
+  ```
+  <body>
+    <h1>Hello</h1>
+
+    <script type="text/javascript">
+      alert("Hello");
+    </script>
+  </body>
+  ```
+- Document Object Model (DOM):
+  - HTML code mapped out into a tree diagram
+  - Example object: Car
+    - Properties: Describes something about an object
+      - Setting a property: car.numberOfDoors = 0;
+      - Getting a property: car.colour; //red
+    - Methods: An action the object can do
+      - Calling method: car.drive();
+      - Note: Method is something an object can do
+  - Example object: Button
+    - Properties: innerHTML | style | firstChild
+    - Methods: click() | appenchild() | setAttribute()
+- Separation of concerns:
+  - HTML > Content only
+  - CSS > Styling only
+  - Javascript > Behaviour/Actions
+  ```
+  > document;
+  > document.firstElementchild;
+  > document.firstElementchild.firstElementchild;
+  > document.firstElementchild.lastElementchild;
+  > document.firstElementchild.lastElementchild.firstElementchild;
+
+  var heading = document.firstElementchild.lastElementchild.firstElementchild;
+  heading.innerHTML = "Good Bye";
+  heading.style.color = "red;
+
+  document.getElementsByTagName("li")[2].style.color = "purple";
+  document.getElementsByTagName("li").length;
+  document.getElementsByClassName("btn")[0];
+  
+  document.getElementById("title").innerHTML = "<em>Good Bye</em>"; - Gives you the exactly what between the selectors
+  document.getElementById("title").textContent = "Good Bye"; - Gives you only the text within the element
+
+  document.querySelector("input").click();
+  document.querySelector("h1");
+  document.querySelector("#title");
+  document.querySelector(".btn");
+  document.querySelector("li a");
+  document.querySelector("li.item");
+  document.querySelector("#list .item"); - first element in an array
+  document.querySelectorAll("#list .item"); - full array
+
+  document.querySelector("h1").style.fontSize = "10rem";
+  document.querySelector("button").classList.add("invisible");
+  document.querySelector("button").classList.remove("invisible");
+  document.querySelector("button").classList.toggle("invisible");
+
+  document.querySelector("a").getAttribute("href");
+  document.querySelector("a").setAttribute("href", "https://www.bing.com");
+  ```
+
+  
+  
