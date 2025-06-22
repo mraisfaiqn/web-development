@@ -842,5 +842,9 @@ Section 16:
   document.querySelector("a").setAttribute("href", "https://www.bing.com");
   ```
 
-  
+Section 17:
+- Built my own dice roll animation with element manipulation using Javascript.
+
+Section 18:
+- 
   
