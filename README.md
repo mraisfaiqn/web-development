@@ -846,5 +846,86 @@ Section 17:
 - Built my own dice roll animation with element manipulation using Javascript.
 
 Section 18:
-- 
-  
+- Anonymous function:
+```
+document.querySelectorAll("button").addEventListener("click", function {
+	alert("Click");
+})
+```
+- Named function:
+```
+for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
+	document.querySelectorAll(".drum")[i].addEventListener("click", handleClick);
+}
+
+function handleClick() {
+	alert("Click");
+}
+```
+- Higher order functions:
+```
+function add(num1, num2) {
+	return num1 + num2;
+}
+
+function multiply(num1, num2) {
+	return num1 * num2;
+}
+
+function calculate(num1, num2, operator) {
+	return operator(num1, num2);
+}
+```
+- Note: Chrome Inspect Debugger
+```
+debugger; -> Shift+Enter
+callbackFunciton(); -> Enter
+Enter Debug Mode
+```
+- Switch case to target individual button clicks
+```
+function handleClick() {
+	var buttonInnerHTML = this.innerHTML;
+	switch (buttonInnerHTML) {
+		case 'w':
+			var tom1 = new Audio("./sounds/tom-1.mp3");
+			tom1.play();
+		break;
+    default: console.log(buttonInnerHTML);
+  }
+```
+- Object properties:
+```
+var houseKeeper1 = {
+	yearsOfExperience: 12,
+	name: Jane,
+	cleaningRepertoire: ["batroom", "lobby", "bedroom"]
+}
+```
+- Contructor function:
+```
+function BellBoy (name, age, hasWorkPermit, languages) { - First letter of function name is CAPITALISED
+	this.name = name;
+	this.age = age;
+	this.hasWorkPermit = hasWorkPermit;
+	this.languages = languages;
+}
+
+var bellBoy1 = new BellBoy("Timmy", 19, true, ["French", "English"]);
+```
+- Methods are functions in association to an Object
+```
+var bellBoy1 = {
+	name: "Timmy",
+	age: 19,
+	hasWorkPermit: true,
+	languages: ["French", "English"],
+	moveSuitcase: function() {
+		alert("May I take your suitcase?");
+		pickUpSuitcase();
+		move();
+	}
+}
+
+bellBoy1.moveSuitcase(); 
+```
