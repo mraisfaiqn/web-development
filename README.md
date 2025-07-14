@@ -929,3 +929,23 @@ var bellBoy1 = {
 
 bellBoy1.moveSuitcase(); 
 ```
+- Keyboard triggers:
+```
+document.addEventListener("keydown", function(event){
+	var keyBoard = event.key;
+	console.log(keyBoard);
+}
+```
+- Callback functions:
+```
+document.addEventListener("keydown", respondToKey(event);
+> "keydown" - Event type is crucial for detecting specific events
+> addEventListener() - High order function: Takes a function as an input
+> respondToKey() - Callback function that is the input
+```
+- Timeout function
+```
+setTimeout(function() {
+	activeButton.classList.remove("pressed");
+}, 100);
+```
