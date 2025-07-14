@@ -949,3 +949,56 @@ setTimeout(function() {
 	activeButton.classList.remove("pressed");
 }, 100);
 ```
+
+Section 19:
+- jQuery Library: Boostrap for HTML vs jQuery for Javascript
+- Downloadable: https://jquery.com/ OR
+- CDN (Content Delivery Network) via Google Hosted Libraries: https://developers.google.com/speed/libraries#jquery
+```
+> document.querySelector("h1");
+> jQuery("h1"); OR $("h1");
+```
+- Placement of jQuery CDN script tag is IMPORTANT!
+```
+(PREFERRED METHOD)
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <h1>Hello World!</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./index.js" charset="UTF-8"></script>
+  </body>
+</html>
+
+$("h1").css("color", "black"); - Ability to start coding JS file without having the document ready check
+
+OR
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./index.js" charset="UTF-8"></script>
+  </head>
+
+  <body>
+    <h1>Hello World!</h1>
+  </body>
+</html>
+
+$(document).ready(function() { - Required to have this document ready check to only load JS file to when entire document is ready
+	$("h1").css("color", "black");
+})
+```
