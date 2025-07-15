@@ -952,6 +952,7 @@ setTimeout(function() {
 
 Section 19:
 - jQuery Library: Boostrap for HTML vs jQuery for Javascript
+  - Manipulate elements in Javascript by using methods fromt he jQuery library
 - Downloadable: https://jquery.com/ OR
 - CDN (Content Delivery Network) via Google Hosted Libraries: https://developers.google.com/speed/libraries#jquery
 ```
@@ -1000,5 +1001,138 @@ OR
 
 $(document).ready(function() { - Required to have this document ready check to only load JS file to when entire document is ready
 	$("h1").css("color", "black");
+})
+```
+- Note: Minify Javascript or CSS to allow users to load the browser faster, saving space in cache
+- Getting and Setting values using jQuery
+```
+$("h1").css("color"); - Getting the value
+$("h1").css("color", "black"); - Setting the value
+```
+- Note:
+  - Javascript: Behaviour
+  - CSS: Appearance
+  - HTML: Content
+- Manipulating style using jQuery
+```
+$("body").addClass("reset-border");
+$("h1").addClass("big-title set-font");
+
+.reset-border {
+  margin: 0;
+  padding: 0;
+}
+
+.big-title {
+  color: #DBEDF3;
+  text-align: center;
+  text-shadow: 3px 0 #DA0463;
+}
+
+.set-font {
+  font-size: 5rem;
+  font-family: "Arvo", cursive;
+}
+```
+- Test using jQuery if classes has bee added to the element
+```
+$("h1").hasClass("set-font");
+```
+- Manipulating text using jQuery
+```
+$("h1").text("This is my Website"); - Manipulating only its text
+$("button").text("Don't Click!");
+
+$("button").html("<em>Dont Click!</em>"); - Manipulating its innerHTML property as well as text
+```
+- Manipulating attributes using jQuery
+```
+<img src="./images/image1.png" alt="image1">
+$("img").attr("src", "./images/image2.png");
+
+<a href="https://www.google.com">Search</a>
+$("a").attr("href", "https://www.yahoo.com");
+
+$("h1").attr("class"); - Get the class attached to this element
+```
+- Adding Event Listeners using jQuery
+```
+$("h1").click(function() {
+	$("h1").css("color", "black");
+})
+--------------------------------
+for (var i = 0; i < document.querySelectorAll("button").length; i++) {
+	document.querySelectorAll("button")[i].addEventListener("click", function() {
+		document.querySelector("h1").style.color = "purple";
+	});
+}
+
+$("button").click(function() { - A for loop is not required as the .click method binds to all button classes it finds
+	$("h1").css("color", "purple");
+})
+--------------------------------
+<input type="text" name="" value="">
+
+$("input").keydown(function(event) {
+	console.log(event.key);
+})
+--------------------------------
+$("body"/document).keydown(function(event) { - To add a keydown listener method to the entire page
+	console.log(event.key);
+--------------------------------
+$("h1").on("mouseover", function() { - Using a universal event listener method that takes in specific event listener as an input
+	$("h1").html("<s>This is my Website</s>");
+})
+})
+```
+- Adding/Removing elements using jQuery
+```
+$("h1").before("<button>New</button");
+$("h1").after("<button>New</button");
+$("h1").prepend("<button>New</button");
+$("h1").append("<button>New</button");
+--------------------------------
+$("button").remove();
+```
+- Animate using jQuery
+```
+$("button").on("click", function() {
+	$("h1").hide();
+})
+
+$("button").on("click", function() {
+	$("h1").show();
+})
+
+$("button").on("click", function() {
+	$("h1").toggle();
+})
+
+$("h1").on("click", function() {
+	$("h1").fadeOut();
+})
+
+$("button").on("click", function() {
+	$("h1").fadeIn();
+})
+
+$("button").on("click", function() {
+	$("h1").fadeToggle();
+})
+
+$("button").on("click", function() {
+	$("h1").slideUp();
+})
+
+$("button").on("click", function() {
+	$("h1").slideDown();
+})
+
+$("button").on("click", function() {
+	$("h1").animate({opacity: 0.5}); - Note that only properties with numerical value can be used
+})
+--------------------------------
+$("button").on("click", function() {
+	$("h1").slideUp().slideDown().animate({opacity: 0.5}); - Cahining the animations together
 })
 ```
