@@ -1136,3 +1136,6 @@ $("button").on("click", function() {
 	$("h1").slideUp().slideDown().animate({opacity: 0.5}); - Cahining the animations together
 })
 ```
+
+Section 20:
+- Creating my own Simon game, colour and sound pattern recognition.
