@@ -1,5 +1,5 @@
 # web-development
-This repo is for strengthening my full-stack web development skills and showcasing my project builds.
+This repo is for strengthening my full-stack web development skills.
 - Using Sublime text editor
 - Installed JsPrettier
 -----------------------------
