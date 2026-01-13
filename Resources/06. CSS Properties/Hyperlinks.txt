@@ -1,0 +1,6 @@
+1.) https://developer.mozilla.org/en-US/docs/Web/CSS/named-color
+2.) https://www.csfieldguide.org.nz/en/interactives/rgb-mixer/
+3.) https://appbrewery.github.io/css-inspection/
+4.) https://chromewebstore.google.com/detail/pesticide/bakpbgckdnepkmkeaiomhmfcnejndkbi?pli=1
+5.) https://colorhunt.co/
+6.) https://unsplash.com/
