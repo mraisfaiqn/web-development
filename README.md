@@ -1133,9 +1133,11 @@ $("button").on("click", function() {
 })
 --------------------------------
 $("button").on("click", function() {
-	$("h1").slideUp().slideDown().animate({opacity: 0.5}); - Cahining the animations together
+	$("h1").slideUp().slideDown().animate({opacity: 0.5}); - Changing the animations together
 })
 ```
 
 Section 20:
 - Creating my own Simon game, colour and sound pattern recognition.
+
+Section 21: The Unix Command Line
