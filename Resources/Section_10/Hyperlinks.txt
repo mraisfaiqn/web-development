@@ -1,3 +1,0 @@
-1.) https://appbrewery.github.io/grid-sizing/
-2.) https://appbrewery.github.io/gridgarden/
-3.) https://appbrewery.github.io/grid-vs-flexbox/
