@@ -1192,3 +1192,60 @@ Section 23: Node.js
 - Asynchronous and Event-driven code that doesnt have to run in sequence, fast and non-blocking of resources
 - Allows us to build an application on a server using JavaScript, large ecosystem to easily add functionality
 - Install Node.js > https://nodejs.org/en/download
+- Node REPL: Read Eval Print Loop (computer environment where user inputs are read, evaluated and results retruned
+  ```
+  node
+  .help
+  .break    Sometimes you get stuck, this gets you out
+  .clear    Alias for .break
+  .editor   Enter editor mode
+  .exit     Exit the REPL
+  .help     Print this help message
+  .load     Load JS from a file into the REPL session
+  .save     Save all evaluated commands in this REPL session to a file
+  ```
+  - Node is like running python in terminal > node index.js
+  - Native node modules: Imagine it as games pre-bundled with your operating system
+    - File system: Allows us to access local storage
+      ```
+      Write File
+      const fs = require("fs");
+
+      fs.writeFile("message.txt", "Hello world!",(err) => {
+      	if (err) throw err;
+      	console.log('The file has been saved!');
+      });
+      
+      Read File
+      const fs = require("fs");
+
+      fs.readFile("message.txt", "UTF-8", (err, data) => {
+      	if (err) throw err;
+      	console.log(data);
+      });     
+      ```
+	- Install Node Package Manager (NPM)
+      - Community resource library
+      ```
+      npm init		Initialise package.json
+      npm install <package> OR npm i <package>
+
+      Note: console.log(`${variable}`);
+
+      package.json types: commonjs OR module
+      commonjs method
+      var generateName = require('sillyname');
+      var sillyName = generateName();
+      console.log(`My silly name will be ${sillyName}.`);
+
+      module method
+      import generateName from 'sillyname';
+      var sillyName = generateName();
+      console.log(`My silly name will be ${sillyName}.`);
+
+      Note: Javascript Objects syntax
+      var prompt = {
+      	message: "Type in your URL: ",
+      	name: "URL",
+      };
+      ```
