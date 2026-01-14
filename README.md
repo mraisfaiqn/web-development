@@ -1141,3 +1141,54 @@ Section 20:
 - Creating my own Simon game, colour and sound pattern recognition.
 
 Section 21: The Unix Command Line
+- Download GitBash for Windows > https://gitforwindows.org/
+- Install and open VSCode to setup terminal via View > Command Pallete > Select Default Profile > Bash
+- Note: You can also run GitBash from Windows terminal
+  ```
+  start "" "C:\Program Files\Git\git-bash.exe"
+  ```
+- We want to more speed and control over our hardware via command line
+- Common commands:
+  ```
+  ls - List contents of current directory
+  cd - Change directory to destination
+  mkdir - Create a new directory folder
+  touch - Create a file within the directory
+  start - Open file with default app
+  code - Open file with VSCode
+  rm - Removes files from directory
+  pwd - Print working directory
+  rm * - Remove all files from directory
+  rm -r - Remove directory
+  ```
+  Note:
+  - Hold Alt key allows you to copy and drag terminal command text
+  - Hold Ctrl + A key to go to the beginning of the cmd line
+  - Hold Ctrl + E key to go to the end of the cmd line
+  - Hold Ctrl + U key to clear the entire cmd line
+ 
+Section 22: Backend Web Development
+- Server
+  - Operating 24/7 
+- Application
+  - Logic that handles user interaction and responds to requests from client
+  - Status codes are put in place to specify responses
+- Database
+  - Stores user data
+  - Web pages requested from browser to server, server responds with serving the HTML files
+  - Web applications are dynamic and not static web pages
+- Frontend Tools:
+  - HTML/CSS/Javascript
+  - React/Angular/Vue (Frameworks)
+- Backend Tools:
+  - Any programming language Java/php/Ruby/C/Python/Javascript
+  - Rails/Spring/ASP.NET/Laravel/Flask&Django/Node (Frameworks)
+
+Section 23: Node.js
+- Javascript framework
+- Frameworks is a suite of pre-built components and structures top build an application
+- Node is actually an Asynchronous event-driven JavaScript runtime designed to build scalable network applications
+- A runtime environment built on a V8 chromium engine using C, C++
+- Asynchronous and Event-driven code that doesnt have to run in sequence, fast and non-blocking of resources
+- Allows us to build an application on a server using JavaScript, large ecosystem to easily add functionality
+- Install Node.js > https://nodejs.org/en/download
