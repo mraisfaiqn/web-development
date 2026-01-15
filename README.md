@@ -1222,7 +1222,7 @@ Section 23: Node.js
       fs.readFile("message.txt", "UTF-8", (err, data) => {
       	if (err) throw err;
       	console.log(data);
-      });     
+      });
       ```
 	- Install Node Package Manager (NPM)
       - Community resource library
@@ -1248,4 +1248,78 @@ Section 23: Node.js
       	message: "Type in your URL: ",
       	name: "URL",
       };
+
+      QR Image Generation
+      import qr from "qr-image";
+      
+      const url = answers.URL;
+      var qr_png = qr.image(url);
+      qr_png.pipe(fs.createWriteStream("qr_imgx.png"));
       ```
+
+Section 24: Express.js with Node.js
+- Improved readability, less code, ability to add middleware
+- Server-side application build using node
+- Note: Terminal doesnt like gaps in string use double quotes eg. mkdir "3.1 Express Server"
+- Listening to ports on server cmd: netstat -ano | findstr "LISTENING"
+- HTTP Requests
+  - GET: Request a resource, HTML, text, data
+  - POST: Sending a resource, information, form, email, password, signup
+  - PUT: Update methnods. Replace a resource completely
+  - PATCH: Update methods. Patch up a resource specific
+  - DELETE: Delete a resource
+  - Note: A request from the browser holds key value pairs about the system its running on
+    ```
+    app.get("/", (req, res) => {
+    	console.log(req.rawHeaders)
+    });
+    OR
+
+	import { dirname } from "path";
+    import { fileURLToPath } from "url";
+
+    const __dirname = dirname(fileURLToPath(import.meta.url));
+    
+    app.get("/", (req, res) => {
+    	res.sendFile(__dirname + "/public/index.html");
+    aa});
+    ```
+  - Install nodemon to allow my localhost browser to automatically refresh the server upon changes to the script
+    ```
+    npm i -g nodemon (-g tag for Global use)
+    ```
+  - URL endpoints: /homepage
+  - HTTP Status Codes: MDN Web Docs
+    - 100-199: Informational responses
+    - 200- 299: Successful responses
+    - 300-399: Redirectional responses (Diff location)
+    - 400-499: Client Error responses
+    - 500-599: Server Error reponses
+  - Postman App allows you to test the backend request and reponse status code (API Testing)
+  - Middleware (body-parser):
+    - Pre process the request (body-parser package)
+    - Logging and monitoring requests (morgan package)
+    - Authenticate all requests
+    - Error identification
+    - Note:
+      - With body-parser middleware, now the reques object has a body while prviously it was undefined
+      - Make sure to properly sequence the middleware callbacks
+      ```
+      app.use(bodyParser.urlencoded({extended: true}));
+      app.post("/submit", (req, res) => {
+      	console.log(req.body);
+      });
+      ```
+    - Build our own middleware:
+      ```
+      import express from "express";
+      const app = express();
+      const port = 3000;
+
+      app.use((req, res, next) => {
+      	console.log("Request method: ", req.method);
+      	next(); *** VERY IMPORTANT TO PREVENT INFINITE LOOP ***
+      });
+      ```
+    - Note: Middleware body-parser is already part of express: app.use(express.urlencoded({extended: true}));
+      
