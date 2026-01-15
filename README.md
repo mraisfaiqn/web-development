@@ -1321,5 +1321,8 @@ Section 24: Express.js with Node.js
       	next(); *** VERY IMPORTANT TO PREVENT INFINITE LOOP ***
       });
       ```
-    - Note: Middleware body-parser is already part of express: app.use(express.urlencoded({extended: true}));
+    - Note: Middleware body-parser is already part of express
+      ```
+      app.use(express.urlencoded({extended: true}));
+      ```
       
