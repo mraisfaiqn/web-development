@@ -2,6 +2,7 @@
 This repo is for strengthening my full-stack web development skills.
 - Using Sublime text editor
 - Installed JsPrettier
+- Update: Installed VSCode and running all scripts through this app now
 -----------------------------
 Section 2:
 - Heading Element:
@@ -1325,4 +1326,74 @@ Section 24: Express.js with Node.js
       ```
       app.use(express.urlencoded({extended: true}));
       ```
+
+Section 25: EJS 
+- Templating: Languages such as Twig (PHP)/Jinja (Python)/EJS (Javascript)
+- File extension index.ejs
+  ```
+  <body>
+  	<ul>
+      <% for (let i=0; i<items.length; i++) { %>
+        <li>
+          <%= items[i] %>
+        </li>
+        <% } %>
+    </ul>
+  </body>
+  ```
+- Note: res.send/res.sendFile is strictly for STATIC pages
+- EJS allows dynamic rendering
+  ```
+  index.js file:
+  app.post("/submit", (req, res) => {
+    res.render("index.ejs", {name: req.body["name"] });
+  };
+
+  index.ejs file:
+  <body>
+    <h1>Hello <%= name %></h1>
+  </body>
+  ```
+- Install EJS support language VSCode plugin
+- Note: HTML boilerplate can easily be accessed using ! in VSCode
+- EJS Tags:
+  ```
+  <%= %> - Variable JS Output
+  <% %> - Executable JS code without an output
+  <%- %> - Rendering HTML
+  <%% %%> - Escape EJS Tag, show <% %>
+  <%# %> - EJS Comments
+  <%- include("<FILE NAME>") %> - Inserting another EJS file (file has to be inside VIEWS folder)
+  ```
+  - Passing data from server to client and client to server
+  - Server to EJS file
+    ```
+    Note: locals.var does not to be declared, its tied to all created variables
+    <% if (locals.fruits) { %> - Safety check to prevent EJS file from crashing if there is not data in fruits
+      <ul>
+        <% items.forEach((fruit) => { %>
+          <li>
+            <%= fruit %>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+    ```
+  - EJS file to Server
+    ```
+    app.post("/submit", (req, res) => {
+      res.render("index.ejs", { name: req.body["fName"] });
+    });
+    ```
+  - HTML/Js to EJS is dynamic, different from static HTML/Js files
+  - Node/Express Project Structure:
+    - public folder: images/favicons/styles, basically static files (paths relative to the public folder)
+      ```
+      <link rel="stylesheet" href="/styles/layout.css">
       
+      app.use(express.static("public"));     
+      ```
+    - views > partials folder: header/footer (paths relative to the views folder)
+
+Section 26: Personal Blog (C3)
+-
