@@ -1396,4 +1396,7 @@ Section 25: EJS
     - views > partials folder: header/footer (paths relative to the views folder)
 
 Section 26: Personal Blog (C3)
+- Create a blog web application using NOde.js, Express.js and EJS
+
+Section 27: Git, Github and Version Control
 -
