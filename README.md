@@ -1397,6 +1397,7 @@ Section 25: EJS
 
 Section 26: Personal Blog (C3)
 - Create a blog web application using NOde.js, Express.js and EJS
+- To improve perhaps, for written blogs to be displayed when selected | sticker upload could be a fun thought | finale would be to tie it down onto a database
 
 Section 27: Git, Github and Version Control
 -
