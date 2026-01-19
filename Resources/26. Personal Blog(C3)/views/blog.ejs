@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs") %>
+
+  <main class="content-wrapper">
+    <section class="hero">
+      <h2 class="hero-title">New Concept</h2>
+      <p class="hero-description">Capture the spark before it fades.</p>
+    </section>
+
+    <form class="concept-form" action="/submit-blog" method="POST">
+      <div class="form-group">
+        <label for="concept-title" class="form-label">Project Title</label>
+        <input type="text" id="concept-title" name="title" placeholder="Give your idea a name..." class="input-title" required>
+      </div>
+      <div class="form-group">
+        <label for="concept-body" class="form-label">Draft</label>
+        <textarea id="concept-body" name="content" placeholder="Start your brainstorm here..." class="input-main"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="concept-remarks" class="form-label">Quick Remarks</label>
+        <input type="text" id="concept-remarks" name="remarks" placeholder="Add a note or tag..." class="input-sub">
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="submit-btn">Publish Concept</button>
+      </div>
+    </form>
+  </main>
+
+<%- include("partials/footer.ejs") %>

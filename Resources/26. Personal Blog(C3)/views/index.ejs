@@ -1,0 +1,43 @@
+<%- include("partials/header.ejs") %>
+
+  <main class="content-wrapper">
+    <section class="hero">
+      <h2 class="hero-title">Building the Future</h2>
+      <p class="hero-description">
+        A collection of raw notes, project sparks, and technical deep-dives. 
+        Thinking out loud about what comes next.
+      </p>
+    </section>
+    <hr class="divider">
+    <section class="post-feed">
+      <% if (locals.blogArticles && blogArticles.length > 0) { %>
+        <% blogArticles.forEach(blogArticle => { %>
+          <article class="post-item">
+            <div class="post-date"><%= blogArticle.postDate %></div>
+            <div class="post-content">
+              <div class="post-header-flex">
+                <h3 class="post-title"><%= blogArticle.postTitle %></h3>
+                <form action="/delete-blog" method="POST">
+                  <input type="hidden" name="postID" value="<%= blogArticle.postID %>">
+                  <button type="submit" class="delete-btn">Delete</button>
+                </form>
+              </div>
+              <p class="post-snippet"><%= blogArticle.postSnippet %></p>
+              <p class="post-remark"><%= blogArticle.postRemark %></p>
+            </div>
+          </article>
+        <% }); %>
+      <% } else { %>
+        <article class="post-item">
+          <div class="post-date">TBW</div>
+          <div class="post-content">
+            <h3 class="post-title"><a href="#">Life is but a dream...</a></h3>
+            <p class="post-snippet">Experiment, execute and create what your mind can think of.</p>
+            <p class="post-remark">Continous learning is so much funn!!</p>
+          </div>
+        </article>
+      <% } %>
+    </section>
+  </main>
+
+<%- include("partials/footer.ejs") %>
