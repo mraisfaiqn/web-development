@@ -1,3 +1,5 @@
 1.) https://a16z.com/news-content/
 2.) https://wheretheiss.at/
 3.) https://bored-api.appbrewery.com/
+4.) https://jsonviewer.stack.hu/
+5.) https://pattern.monster/

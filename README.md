@@ -1455,4 +1455,25 @@ Section 28: Appllication Programming Interfaces (APIs)
   - Key value pair query parameters: /endpoint?query=value&query2=value 
   - Filter: /filter?type=value
   - Unique Path parameters: /endpoint/{path-params} Eg.ID, username etc
+- JSON: JavaScript Object Notation
+  - JS Object (Data interpreted by editor/code interpreter): Key value pairs, separated bcccccccy a colon, mulitple properties by adding a comma after each line, arrays inside an object and nest an opbject inside another object
+  - JSON Object (Data transffered over internet): Structure is the same, difference are that the key requires double quotes (serialised into a string) surrounding it whereas ion JS it doesnt
+  ```
+  JS Object
+  const wardrobe: {
+    door: 2,
+    drawers: 2,
+    colour: "red",
+  };
+
+  JSON Object
+  {
+    "doors": 2,
+    "drawers": 2,
+    "colour": "red"
+  }
+  ```
+  - Use JSON visualiser to make JSON more human readable (https://jsonviewer.stack.hu/)
+  - Other way around, changing it from JS Object to JSON use code: const jsonData = JSON.stringify(data);
+  - Unpacking JSON to JS Object: const data = JSON.parse(jsonData);
 - 

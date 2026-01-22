@@ -19,6 +19,33 @@ app.get("/", (req, res) => {
 app.post("/recipe", (req, res) => {
   //Step 3: Write your code here to make this behave like the solution website.
   //Step 4: Add code to views/index.ejs to use the recieved recipe object.
+  const selectedButton = req.body["choice"];
+  var selectedRecipe = "";
+  var selectedProtein = "";
+  var selectedSalsa = "";
+  var selectedTopping = "";
+  if (selectedButton == "chicken") {
+    const jsonData = JSON.parse(recipeJSON);
+    selectedRecipe = jsonData[0].name;
+    selectedProtein = jsonData[0].ingredients.protein.name + ", " + jsonData[0].ingredients.protein.preparation;
+    selectedSalsa = jsonData[0].ingredients.salsa.name + " " + jsonData[0].ingredients.salsa.spiciness;
+    selectedTopping = jsonData[0].ingredients.toppings;
+  } else if (selectedButton == "beef") {
+    const jsonData = JSON.parse(recipeJSON);
+    selectedRecipe = jsonData[1].name;
+    selectedProtein = jsonData[1].ingredients.protein.name + ", " + jsonData[1].ingredients.protein.preparation;
+    selectedSalsa = jsonData[1].ingredients.salsa.name + " " + jsonData[1].ingredients.salsa.spiciness;
+    selectedTopping = jsonData[1].ingredients.toppings;
+  } else if (selectedButton == "fish") {
+    const jsonData = JSON.parse(recipeJSON);
+    selectedRecipe = jsonData[2].name;
+    selectedProtein = jsonData[2].ingredients.protein.name + ", " + jsonData[2].ingredients.protein.preparation;
+    selectedSalsa = jsonData[2].ingredients.salsa.name + " " + jsonData[2].ingredients.salsa.spiciness;
+    selectedTopping = jsonData[2].ingredients.toppings;
+  } else {
+    // do nothing
+  }
+  res.render("index.ejs", {recipeName: selectedRecipe, recipeProtein: selectedProtein, recipeSalsa: selectedSalsa, recipeTopping: selectedTopping});
 });
 
 app.listen(port, () => {
