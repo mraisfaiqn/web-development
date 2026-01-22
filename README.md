@@ -1400,4 +1400,40 @@ Section 26: Personal Blog (C3)
 - To improve perhaps, for written blogs to be displayed when selected | sticker upload could be a fun thought | finale would be to tie it down onto a database
 
 Section 27: Git, Github and Version Control
+```
+Initial Setup
+git remote add origin https://github.com
+git branch -M main
+git push -u origin main
+
+General Workflow
+git init
+git add .
+git commit -m ""
+git push
+
+Other Workflow
+git fetch
+git pull
+git commit -m ""
+git push
+
+-------------------
+
+git checkout main
+git merge test-branch
+git commit -m ""
+git push
+
+Other Commands
+git status
+git restore --staged .
+git log (Pres "q" to exit)
+git clone repo-url
+git branch branch-name
+git branch (View branches)
+git checkout branch-name (Switch branches)
+```
+
+Section 28: Appllication Programming Interfaces (APIs)
 -
