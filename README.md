@@ -1434,6 +1434,11 @@ git branch branch-name
 git branch (View branches)
 git checkout branch-name (Switch branches)
 ```
+- Contributing to other repositories: Collaboration
+  - Forking a repository: Making a duplicate and putting it under my github account.
+  - Make changes and commit it our own master branch of this forked copy
+  - Make a pull request and explain what changes and why it improves the current version
+  - Author approves merging the pull request with comments
 
 Section 28: Appllication Programming Interfaces (APIs)
 -
