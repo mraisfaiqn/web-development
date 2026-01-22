@@ -1441,4 +1441,4 @@ git checkout branch-name (Switch branches)
   - Author approves merging the pull request with comments
 
 Section 28: Appllication Programming Interfaces (APIs)
--
+- Testing git repo commands
