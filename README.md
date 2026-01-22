@@ -1449,4 +1449,10 @@ Section 28: Appllication Programming Interfaces (APIs)
 - REST:API
   - Uses HTTP Protocol to interact
   - GET/ POST/ PUT/ PATCH/ DELETE
-  
+  - API Requests shoulde be rate limited to Eg. 100 requests every 15 minutes.
+- Formatting API requests:
+  - Specific endpoints: /endpoint
+  - Key value pair query parameters: /endpoint?query=value&query2=value 
+  - Filter: /filter?type=value
+  - Unique Path parameters: /endpoint/{path-params} Eg.ID, username etc
+- 
