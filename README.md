@@ -1441,4 +1441,12 @@ git checkout branch-name (Switch branches)
   - Author approves merging the pull request with comments
 
 Section 28: Appllication Programming Interfaces (APIs)
-- Testing git repo commands
+- Bridge communication between 2 different web apps to define rules of interactions
+- Website request to obtain weather data from Open Weather (GET request > Response with data structure)
+- Website to store email subscriptions to your newsletter with MailChimp (POST request > Resonse with status)
+- Program to send tweets to a plant at home, where each tweet waters my plant (API for the Arduino/RPI, listens for request coming through, requests trigger water pump, response water release or moisture content of soil etc.)
+- Types of APIs: GraphQL | {REST:API} | {SOAP} | gRPC (Each of these APIs have different architectural styles)
+- REST:API
+  - Uses HTTP Protocol to interact
+  - GET/ POST/ PUT/ PATCH/ DELETE
+  
