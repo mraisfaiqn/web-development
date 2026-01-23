@@ -3,3 +3,5 @@
 3.) https://bored-api.appbrewery.com/
 4.) https://jsonviewer.stack.hu/
 5.) https://pattern.monster/
+6.) https://secrets-api.appbrewery.com/
+7.)https://www.base64decode.org/

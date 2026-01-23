@@ -1496,3 +1496,18 @@ Section 28: Appllication Programming Interfaces (APIs)
   - No need to JSON.parse as its inbuilt
   - Greater error handling easily grouped
   - Making a request to the server shrink into just one line
+- API Authentication and Authorisation
+  - Ability to prove the rights of access to the API
+  - 4 Tiers:
+    - No Authentication
+      > Rate limit: Check the IP address how many requests per min
+    - Basic Authentication
+      > Username/Password: Base64 Encoded string in the authorisation header of the request Base64(username:password) -> Basic xxxxxxxxxxxx
+    - API Key Authorisation
+      > API key obtained to access, ability to track usage (Google Map API) most of the time priced out
+    - Token Based Authentication
+      > Username/Password -> Generate a token to access API (OAuth) -> Bearer xxxx-xxx-xxx
+- 
+
+
+
