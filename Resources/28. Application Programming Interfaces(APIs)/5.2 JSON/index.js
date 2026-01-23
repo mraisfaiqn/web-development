@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
+// VIEW SOLUTION.JS FOR USE OF A SWITCH CASE
 app.post("/recipe", (req, res) => {
   //Step 3: Write your code here to make this behave like the solution website.
   //Step 4: Add code to views/index.ejs to use the recieved recipe object.

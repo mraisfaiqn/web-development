@@ -25,8 +25,6 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  console.log(req.body);
-
   // Step 2: Play around with the drop downs and see what gets logged.
   // Use axios to make an API request to the /filter endpoint. Making
   // sure you're passing both the type and participants queries.
@@ -35,6 +33,35 @@ app.post("/", async (req, res) => {
   // Step 3: If you get a 404 error (resource not found) from the API request.
   // Pass an error to the index.ejs to tell the user:
   // "No activities that match your criteria."
+  try {
+    let response;
+    if (req.body["type"] === "") {
+      response = await axios.get("https://bored-api.appbrewery.com/random");
+    } else {
+      response = await axios.get("https://bored-api.appbrewery.com/filter?type=" + req.body["type"] + "&participants=" + req.body["participants"]);
+    };
+    const result = response.data;
+    console.log(result);
+    console.log(result.length);
+    
+    if (result.length != null) {
+      const randomIndex = Math.floor(Math.random() * result.length);
+      console.log(randomIndex);
+      res.render("index.ejs", { data: result[randomIndex] });
+    } else {
+      res.render("index.ejs", { data: result });
+    }
+    
+  } catch (error) {
+    console.log(error.response.status);
+    if (error.response.status == 404) {
+      console.error("Failed to make request:", error.message);
+      res.render("index.ejs", { error: "No activities that match your criteria." });
+    } else {
+      console.error("Failed to make request:", error.message);
+      res.render("index.ejs", { error: error.message });
+    };
+  }
 });
 
 app.listen(port, () => {

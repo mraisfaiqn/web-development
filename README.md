@@ -1474,6 +1474,25 @@ Section 28: Appllication Programming Interfaces (APIs)
   }
   ```
   - Use JSON visualiser to make JSON more human readable (https://jsonviewer.stack.hu/)
-  - Other way around, changing it from JS Object to JSON use code: const jsonData = JSON.stringify(data);
-  - Unpacking JSON to JS Object: const data = JSON.parse(jsonData);
-- 
+  - Other way around, changing it from JS Object to JSON use code:
+  ```
+  const jsonData = JSON.stringify(data);
+  ```
+  - Unpacking JSON to JS Object: 
+  ```
+  const data = JSON.parse(jsonData);
+  ```
+- Requests using public APIs
+  - Options object: hostname | path of endpoint | method GET
+  - Insert options into a request method form HTTPS module prebuilt into Node
+  - Response returns as a callback in packets which will need to be grouped and add each chunk into a data string
+  - Once the end message have been received, data can parsed and passed onto the front end
+  - Set a try catch block for error handling
+  - A possible error message from request, callback to handle
+  - Close the access portal request.end()
+- Use native node module Axios
+  - Async function which simplifies request response handling
+  - Promise based .then or async await to handle the response
+  - No need to JSON.parse as its inbuilt
+  - Greater error handling easily grouped
+  - Making a request to the server shrink into just one line
