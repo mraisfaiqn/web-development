@@ -1507,7 +1507,82 @@ Section 28: Appllication Programming Interfaces (APIs)
       > API key obtained to access, ability to track usage (Google Map API) most of the time priced out
     - Token Based Authentication
       > Username/Password -> Generate a token to access API (OAuth) -> Bearer xxxx-xxx-xxx
+- REST API
+  - GET | POST | PUT | PATCH | DELETE
+  ```
+  import axios from "axios";
+  GET Protocol - Only 2 parameters
+  Promises API
+  - Modern syntax for waiting till finished than move to next line (Debug friendly*)
+  app.get("/", async (req, res) => {
+    try {
+      const response = await axios.get("URL", {
+        //Parameter, Config, Data, Header, Authentication etc.
+        params: {
+          ID: 12345,
+        },
+      });
+      res.render("index.ejs", { content: JSON.stringify(result.data) });
+    } catch (error) {
+      res.status(404).send(error.response.data);
+    }
+  });
+  
+  - Sequential resolve .get>.then ...
+  axios.get("URL", {
+    params: {
+      ID: 12345,
+    },
+  }).then(function (response){
+    res.json({data: response.data});
+  }).catch(function (error) {
+    res.status(404).send(error.response.data);
+  }).finally(...);
+
+  POST Protocol - More than 2 parameters as the body is needed
+  app.post("/", async (req, res) => {
+    try{
+      await axios.post("URL", body, config);
+      res.sendStatus(201);
+    } catch (error) {
+        res.status(404).send(error.response.data);
+    }
+  });
+
+  PUT Protocol - More than 2 parameters as the body is needed (Replace entire entry with body)
+  app.post("/", async (req, res) => {
+    try{
+      await axios.put("URL", body, config);
+      res.sendStatus(200);
+    } catch (error) {
+        res.status(404).send(error.response.data);
+    }
+  });
+
+  PATCH Protocol - More than 2 parameters as the body is needed (Provide specific data update adn the rest remains unchanged)
+  app.post("/", async (req, res) => {
+    try{
+      await axios.patch("URL", body, config);
+      res.sendStatus(200);
+    } catch (error) {
+        res.status(404).send(error.response.data);
+    }
+  });
+
+  DELETE Protocol - Only 2 parameters
+  app.post("/", async (req, res) => {
+    try{
+      await axios.delete("URL", config);
+      res.sendStatus(200);
+    } catch (error) {sss
+        res.status(404).send(error.response.data);
+    }
+  });
+  ```
+
+Section 29: Capstone Project - Public API
 - 
+
 
 
 
