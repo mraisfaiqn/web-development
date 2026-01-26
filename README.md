@@ -1584,8 +1584,15 @@ Section 29: Capstone Project - Public API
 - Intergrated a public API with my own webpage.
 
 Section 30: Build your own API
-- 
-
+- Data Collection
+- Proprietry Algorithm/Service
+- Simplified Interface
+- RESTful Architecture: Representational State Transfer
+  - HTTP Protocol {GET|POST|PUT|PATCH|DELETE}
+  - JSON/XML stadard data format output
+  - Client Server are completely separate, not on the same system or file (Request/Response over a network allows each side to scale independently, evolve and built seprately by different people)
+  - Stateless, each request should contain all info needed to understand request. Server should not be storing client side state/data between requests. Each request/response can be complete without needing to know previous states.
+  - Resource based, centered around resources and uses a unique resource identifier/locater URI/URL
 
 
 
