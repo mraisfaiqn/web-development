@@ -58,11 +58,10 @@ app.patch("/jokes/:id", (req, res) => {
   const replacementJoke = {
     id: jokeInt,
     jokeText: req.body.text || existingJoke.jokeText,
-    jokeType: req.body.type || existingJoke.jokeText
+    jokeType: req.body.type || existingJoke.jokeType
   };
   const jokeIndex = jokes.findIndex((joke) => joke.id === jokeInt);
   jokes[jokeIndex] = replacementJoke;
-  console.log(jokeBody);
   res.json(replacementJoke);
 });
 
