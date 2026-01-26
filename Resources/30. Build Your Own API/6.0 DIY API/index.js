@@ -8,16 +8,63 @@ const masterKey = "4VGP2DN-6EWM4SJ-N6FGRHV-Z3PR3TT";
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //1. GET a random joke
+app.get("/random", (req, res) => {
+  const randomIndex = Math.floor(Math.random() * jokes.length);
+  res.json(jokes[randomIndex]);
+});
 
 //2. GET a specific joke
+app.get("/jokes/:id", (req, res) => {
+  const jokeInt = parseInt(req.params.id);
+  const jokeID = jokes.find((joke) => joke.id === jokeInt);
+  res.json(jokeID);
+});
 
 //3. GET a jokes by filtering on the joke type
+app.get("/filter", (req, res) => {
+  const type = req.query.type;
+  const filteredJokes = jokes.filter((joke) => joke.jokeType === type);
+  res.json(filteredJokes);
+});
 
 //4. POST a new joke
+app.post("/jokes", (req, res) => {
+  const newJoke = {
+    id: jokes.length + 1,
+    jokeText: req.body.text,
+    jokeType: req.body.type
+  };
+  jokes.push(newJoke);
+  res.json(newJoke);
+});
 
 //5. PUT a joke
+app.put("/jokes/:id", (req, res) => {
+  const jokeInt = parseInt(req.params.id);
+  const replacementJoke = {
+    id: jokeInt,
+    jokeText: req.body.text,
+    jokeType: req.body.type
+  };
+  const jokeIndex = jokes.findIndex((joke) => joke.id === jokeInt);
+  jokes[jokeIndex] = replacementJoke;
+  res.json(replacementJoke);
+});
 
 //6. PATCH a joke
+app.patch("/jokes/:id", (req, res) => {
+  const jokeInt = parseInt(req.params.id);
+  const existingJoke = jokes.find((joke) => joke.id === jokeInt);
+  const replacementJoke = {
+    id: jokeInt,
+    jokeText: req.body.text || existingJoke.jokeText,
+    jokeType: req.body.type || existingJoke.jokeText
+  };
+  const jokeIndex = jokes.findIndex((joke) => joke.id === jokeInt);
+  jokes[jokeIndex] = replacementJoke;
+  console.log(jokeBody);
+  res.json(replacementJoke);
+});
 
 //7. DELETE Specific joke
 
