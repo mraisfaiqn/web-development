@@ -1581,6 +1581,9 @@ Section 28: Appllication Programming Interfaces (APIs)
   ```
 
 Section 29: Capstone Project - Public API
+- Intergrated a public API with my own webpage.
+
+Section 30: Build your own API
 - 
 
 
