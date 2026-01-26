@@ -1,0 +1,17 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Welcome to Jokes Only! 😂</h1>
+<form action="/submit" method="POST">
+  <input type="submit" value="Generate Joke" formaction="/get-joke">
+</form>
+<% if (locals.joke) { %>
+  <div class="joke-display">
+    <h3><%= joke %></h3>
+  </div>
+<% } else { %>
+  <div class="joke-display">
+  <h3>Haha no jokes for you...</h3>
+</div>
+<% } %>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,2 @@
+1.) https://github.com/appbrewery/public-api-lists
+2.) https://rapidapi.com/collection/list-of-free-apis
