@@ -41,14 +41,66 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Write your code here//
 
 //CHALLENGE 1: GET All posts
+app.get("/posts", (req, res) => {
+  res.json(posts);
+});
 
 //CHALLENGE 2: GET a specific post by id
+app.get("/posts/:id", (req, res) => {
+  const blogInt = parseInt(req.params.id);
+  const postID = posts.find((post) => post.id === blogInt);
+  if (!postID) {
+    return res.status(404).json({ message: "Post no found." });
+  } else {
+    res.json(postID);
+  }
+});
 
 //CHALLENGE 3: POST a new post
+app.post("/posts", (req, res) => {
+  const newPost = {
+    id: posts.length + 1,
+    title: req.body.title,
+    content: req.body.content,
+    author: req.body.author,
+    date: new Date()
+  };
+  posts.push(newPost);
+  res.json(newPost);
+});
 
 //CHALLENGE 4: PATCH a post when you just want to update one parameter
+app.patch("/posts/:id", (req, res) => {
+  const blogInt = parseInt(req.params.id);
+  const existingPost = posts.find((post) => post.id === blogInt);
+  if (!existingPost) {
+    return res.status(404).json({ message: "Post no found." });
+  } else {
+    const replacementPost = {
+      id: blogInt,
+      title: req.body.title || existingPost.title,
+      content: req.body.content || existingPost.content,
+      author: req.body.author || existingPost.author,
+      date: new Date()
+    };
+    const postIndex = posts.findIndex((post) => post.id === blogInt);
+    posts[postIndex] = replacementPost;
+    res.json(replacementPost);
+  };
+});
 
 //CHALLENGE 5: DELETE a specific post by providing the post id.
+app.delete("/posts/:id", (req, res) => {
+  const blogInt = parseInt(req.params.id);
+  const postIndex = posts.findIndex((post) => post.id === blogInt);
+  if (postIndex === -1) {
+    return res.status(404).json({ message: "Post no found." });
+  } else {
+    posts.splice(postIndex, 1);
+    res.json({ message: "Post deleted."});
+  };
+});
+
 
 app.listen(port, () => {
   console.log(`API is running at http://localhost:${port}`);

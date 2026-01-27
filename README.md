@@ -1590,10 +1590,12 @@ Section 30: Build your own API
 - RESTful Architecture: Representational State Transfer
   - HTTP Protocol {GET|POST|PUT|PATCH|DELETE}
   - JSON/XML stadard data format output
-  - Client Server are completely separate, not on the same system or file (Request/Response over a network allows each side to scale independently, evolve and built seprately by different people)
+  - Client<>Server are completely separate, not on the same system or file (Request/Response over a network allows each side to scale independently, evolve and built seprately by different people)
   - Stateless, each request should contain all info needed to understand request. Server should not be storing client side state/data between requests. Each request/response can be complete without needing to know previous states.
   - Resource based, centered around resources and uses a unique resource identifier/locater URI/URL
 ```
+Server.js
+
 app.get("/random", (req, res) => {
   const randomIndex = Math.floor(Math.random() * jokes.length);
   res.json(jokes[randomIndex]);
@@ -1646,5 +1648,26 @@ app.patch("/jokes/:id", (req, res) => {
   jokes[jokeIndex] = replacementJoke;
   console.log(jokeBody);
   res.json(replacementJoke);
+});
+
+app.delete("/jokes/:id", (req, res) => {
+  const jokeInt = parseInt(req.params.id);
+  const jokeIndex = jokes.findIndex((joke) => joke.id === jokeInt);
+  if (jokeIndex > -1) {
+    jokes.splice(jokeIndex, 1);
+    res.sendStatus(200);
+  } else {
+    res.status(404).json({ error: `Joke[${jokeInt}] not found.`})
+  };
+});
+
+app.delete("/all", (req, res) => {
+  const usedKey = req.query.key;
+  if (usedKey === masterKey) {
+    jokes = [];
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(404).json({ error: `You are not authorised!` });
+  };
 });
 ```
