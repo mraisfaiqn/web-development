@@ -1593,6 +1593,7 @@ Section 30: Build your own API
   - Client<>Server are completely separate, not on the same system or file (Request/Response over a network allows each side to scale independently, evolve and built seprately by different people)
   - Stateless, each request should contain all info needed to understand request. Server should not be storing client side state/data between requests. Each request/response can be complete without needing to know previous states.
   - Resource based, centered around resources and uses a unique resource identifier/locater URI/URL
+  - Contribute to stackoverflow and other repositories*
 ```
 Server.js
 
@@ -1670,4 +1671,82 @@ app.delete("/all", (req, res) => {
     res.sendStatus(404).json({ error: `You are not authorised!` });
   };
 });
+```
+
+Section 31: Databases
+- SQL DB
+  - Data stored in tables
+  - Populate rows and columns
+  - Relational Database forms relationships between tables
+- NoSQL DB
+  - Flexibility: JSON data > Ability to change data without affecting entire table (Eg.One user able to have more data fields than originally structured when setting up the table)
+  - Key: Value pairs, single document
+  - Scalability, horizontal (more fields) and vertically (more records)
+
+Section 32: SQL
+- CRUD Operations (Create, Read, Update, Destroy)
+```
+CREATE TABLE customers (
+  id int NOT NULL,
+  first_name varchar(255),
+  last_name varchar(255),
+  address varchar(255),
+  PRIMARY KEY (id)
+);
+
+INSERT INTO customers (id, first_name, last_name, address) VALUES (1, 'John', 'Doe', '32 Cherry Blvd');
+INSERT INTO customers (id, first_name, last_name, address) VALUES (2, 'Angela', 'Yu', '12 Sunset Drive');
+
+CREATE TABLE products (
+  id int NOT NULL,
+  name string,
+  price money,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO products (id, name, price) VALUES (1, 'Pen', 1.20);
+
+------------------------------------------------------------------
+
+SELECT * FROM customers;
+
+SELECT name, price FROM products;
+
+SELECT * FROM products WHERE id=1;
+
+------------------------------------------------------------------
+
+UPDATE products SET price=0.8 WHERE id=2;
+
+ALTER TABLE products ADD stock int;
+
+UPDATE products SET stock=32 WHERE id=1;
+UPDATE products SET stock=12 WHERE id=2;
+
+------------------------------------------------------------------
+
+DELETE FROM products WHERE name='Pencil';
+
+------------------------------------------------------------------
+
+CREATE TABLE orders (
+  id int NOT NULL,
+  order_number int,
+  customer_id int,
+  product_id int,
+  PRIMARY KEY (id),
+  FOREIGN KEY (customer_id) REFERENCES customers (id),
+  FOREIGN KEY (product_id) REFERENCES products (id)
+);
+
+INSERT INTO orders VALUES (1, 4362, 2, 1);
+INSERT INTO orders VALUES (2, 3254, 1, 1);
+
+SELECT orders.order_number, customers.first_name, customers.last_name, customers.address
+FROM orders
+INNER JOIN customers ON orders.customer_id=customers.id;
+
+SELECT orders.order_number, products.name, products.price
+FROM orders
+INNER JOIN products ON orders.product_id=products.id;
 ```
