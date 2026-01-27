@@ -1750,3 +1750,35 @@ SELECT orders.order_number, products.name, products.price, products.stock
 FROM orders
 INNER JOIN products ON orders.product_id=products.id;
 ```
+
+Section 33: PostgreSQL
+- Widely used by top companies (Apple, Twitch, Instagram, NASA)
+- Free and open source, with lots of career opportunities and community support
+- Client (Frontend request) <> Server (Handle request) <> App (Business logic) <> Database (Data storage)
+- Blog Table Structure:
+  - Posts table {title, date, author}
+  - Users table {name, password, email}
+```
+import Client from "pg"; 
+
+const db = new Client({
+  user: "username",
+  host: "localhost",
+  database: "mydatabase",
+  password: "password",
+  port: "5432",
+});
+
+db.connect ();
+
+db.query("SELECT * FROM users", (err, res) => {
+  if (err) {
+    console.error("Error executing query", err.stack);
+  } else {
+    console.log("User data: res.rows);
+  }
+
+  db.end();
+});
+```
+- Download local Postgres server and pgAdmin UI
