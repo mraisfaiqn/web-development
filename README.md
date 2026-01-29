@@ -1873,4 +1873,51 @@ SQL Parameter Query
 
 db.query("INSERT INTO world_food (country, rice_production, wheat_production) VALUES ($1, $2, $3)",["Italy", 1.46, 7.3]);
 
+-----------------------------------------------------------------
+
+async function checkVisited() {
+   const result = await db.query("SELECT country_code FROM visited_countries;");
+  let visitedCountries = [];
+  result.rows.forEach(row => {
+    visitedCountries.push(row.country_code); // Accessing specific column
+  });
+  return visitedCountries;
+};
+
+app.get("/", async (req, res) => {
+  const countriesVisited = await checkVisited();
+  res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited });
+});
+
+-----------------------------------------------------------------
+
+NOTE: We can create a function to handle db.end() with proper application shutdowns
+/ Function to handle process termination
+const handleGracefulShutdown = () => {
+  console.log('Received SIGINT. Closing database connection.');
+  
+  // Call the appropriate method to end your database connection
+  if (db && typeof db.end === 'function') {
+    db.end(err => {
+      if (err) {
+        console.error('Error closing database connection:', err.message);
+        // Optionally exit with a non-zero code to indicate an issue
+        process.exit(1); 
+      } else {
+        console.log('Database connection closed gracefully.');
+        // Exit cleanly
+        process.exit(0); 
+      }
+    });
+  } else {
+    console.log('No database connection to close, exiting.');
+    process.exit(0);
+  }
+};
+
+// Listen for the SIGINT event
+process.on('SIGINT', handleGracefulShutdown);
+
+console.log('Application running. Press Ctrl+C to trigger SIGINT and close the DB connection.')
 ```
+- 

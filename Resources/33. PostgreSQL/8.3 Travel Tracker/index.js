@@ -19,6 +19,34 @@ db.connect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// Function to handle process termination
+const handleGracefulShutdown = () => {
+  console.log('Received SIGINT. Closing database connection.');
+  
+  // Call the appropriate method to end your database connection
+  if (db && typeof db.end === 'function') {
+    db.end(err => {
+      if (err) {
+        console.error('Error closing database connection:', err.message);
+        // Optionally exit with a non-zero code to indicate an issue
+        process.exit(1); 
+      } else {
+        console.log('Database connection closed gracefully.');
+        // Exit cleanly
+        process.exit(0); 
+      }
+    });
+  } else {
+    console.log('No database connection to close, exiting.');
+    process.exit(0);
+  }
+};
+
+// Listen for the SIGINT event
+process.on('SIGINT', handleGracefulShutdown);
+
+console.log('Application running. Press Ctrl+C to trigger SIGINT and close the DB connection.')
+
 app.get("/", async (req, res) => {
   //Write your code here.
   const result = await db.query("SELECT country_code FROM visited_countries;");
@@ -27,9 +55,24 @@ app.get("/", async (req, res) => {
   result.rows.forEach(row => {
     visitedCountries.push(row.country_code); // Accessing specific column
   });
-  console.log(visitedCountries);
   res.render("index.ejs", {total: visitedCountries.length, countries: visitedCountries });
-  db.end();
+});
+
+app.post("/add", async (req, res) => {
+  const searchResult = req.body["country"].toUpperCase();
+  try {
+    const result = await db.query("SELECT country_code FROM search_countries WHERE UPPER(country_name) = $1 OR country_code = $1;", [searchResult]);
+    if (result.rows.length === 1) {
+      await db.query("INSERT INTO visited_countries (country_code) VALUES ($1);", [result.rows[0].country_code]);
+    } else {
+      console.log("Database result length error...");
+    };
+  } catch (error) {
+    console.log("Error searching for country!");
+  };
+  
+  
+  res.redirect("/");
 });
 
 app.listen(port, () => {
