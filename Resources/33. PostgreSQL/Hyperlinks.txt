@@ -1,1 +1,2 @@
 1.) https://www.npmjs.com/package/pg
+2.) https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes#:~:text=The%20ISO%203166%2D1%20standard%20currently,members%20of%20the%20United%20Nations.

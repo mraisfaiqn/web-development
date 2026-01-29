@@ -1749,6 +1749,17 @@ INNER JOIN customers ON orders.customer_id=customers.id;
 SELECT orders.order_number, products.name, products.price, products.stock
 FROM orders
 INNER JOIN products ON orders.product_id=products.id;
+
+------------------------------------------------------------------
+
+CREATE TABLE friends (
+  id SERIAL PRIMARY KEY;
+  name VARCHAR(50); //TEXT data type slightly slower but efficient enough for having longer charactrer field
+  age INT,
+  is_cool BOOLEAN
+);
+
+INSERT INTO world_food (country, rice_production, wheat_production) VALUES ('Italy', 1.46, 7.3);
 ```
 
 Section 33: PostgreSQL
@@ -1759,9 +1770,9 @@ Section 33: PostgreSQL
   - Posts table {title, date, author}
   - Users table {name, password, email}
 ```
-import Client from "pg"; 
+import pg from "pg"; 
 
-const db = new Client({
+const db = new pg.Client({
   user: "username",
   host: "localhost",
   database: "mydatabase",
@@ -1775,10 +1786,91 @@ db.query("SELECT * FROM users", (err, res) => {
   if (err) {
     console.error("Error executing query", err.stack);
   } else {
-    console.log("User data: res.rows);
+    console.log("User data: res.rows");
   }
 
   db.end();
 });
 ```
 - Download local Postgres server and pgAdmin UI
+- Loose matching using LIKE keyword to serach for patterns:
+  - || is a concatenate or merge operation in SQL
+  - SELECT country FROM capitals WHERE country LIKE 'United'||'%';
+  - SELECT country FROM world_food WHERE country LIKE '%'||'a'
+- NOT NULL:
+  - Missing or empty values not allowed
+  - Attempt to add NULL will result in an error
+- UNIQUE:
+  - Value cannot be repeated in the table.
+  - No other value stored can be the same (avoids duplicates)
+```
+Structure for Express/Node Web Apps
+import pg from "pg";
+import express from "express";
+import bodyParser from "body-parser";
+
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "world",
+  password: "mrais",
+  port: "5432",
+});
+
+db.connect();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
+app.get("/", async (req, res) => {
+  const result = await db.query("SELECT * FROM visited_countries;");
+  console.log(result.rows);
+  res.render("index.ejs");
+
+  db.end();
+});
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+
+OR ---------------------------------------------------------------
+
+const { Pool } = pg;
+const app = express();
+const port = 3000;
+
+const pool = new Pool({
+  user: "postgres",
+  host: "localhost",
+  database: "world",
+  password: "mrais",
+  port: "5432",
+});
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
+app.get("/", async (req, res) => {
+  let client;
+  try {
+    client = await pool.connect();
+    const result = await client.query("SELECT * FROM visited_countries;");
+    console.log(result.rows);
+    res.render("index.ejs");
+  } catch (error) {
+    console.error('An error occurred:', error);
+    // Handle the error appropriately
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+
+-----------------------------------------------------------------
+SQL Parameter Query
+
+db.query("INSERT INTO world_food (country, rice_production, wheat_production) VALUES ($1, $2, $3)",["Italy", 1.46, 7.3]);
+
+```
