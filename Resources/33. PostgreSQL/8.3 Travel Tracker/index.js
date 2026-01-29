@@ -37,6 +37,26 @@ app.listen(port, () => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------POSSIBLE WAY OF REFRESHING THE APP WITHOUT CRASHING--------------------------- 
 // const { Pool } = pg;
 // const app = express();
 // const port = 3000;
