@@ -47,33 +47,68 @@ process.on('SIGINT', handleGracefulShutdown);
 
 console.log('Application running. Press Ctrl+C to trigger SIGINT and close the DB connection.')
 
-app.get("/", async (req, res) => {
-  //Write your code here.
+async function checkVisited() {
   const result = await db.query("SELECT country_code FROM visited_countries;");
   let visitedCountries = [];
-  // More queries can go here
   result.rows.forEach(row => {
     visitedCountries.push(row.country_code); // Accessing specific column
   });
-  res.render("index.ejs", {total: visitedCountries.length, countries: visitedCountries });
+  return visitedCountries;
+};
+
+app.get("/", async (req, res) => {
+  const countriesVisited = await checkVisited();
+  res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited });
 });
 
 app.post("/add", async (req, res) => {
   const searchResult = req.body["country"].toUpperCase();
   try {
-    const result = await db.query("SELECT country_code FROM search_countries WHERE UPPER(country_name) = $1 OR country_code = $1;", [searchResult]);
-    if (result.rows.length === 1) {
-      await db.query("INSERT INTO visited_countries (country_code) VALUES ($1);", [result.rows[0].country_code]);
+    const result = await db.query("SELECT country_code FROM search_countries WHERE (UPPER(country_name) = $1 OR country_code = $1;", [searchResult]);
+    console.log(result.rows);
+    if (result.rows.length != 0) {
+      try {
+        await db.query("INSERT INTO visited_countries (country_code) VALUES ($1);", [result.rows[0].country_code]);
+        res.redirect("/");
+      } catch (err) {
+        const countriesVisited = await checkVisited();
+        res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, error: "Country has already been added..."});
+      };    
     } else {
-      console.log("Database result length error...");
+      const countriesVisited = await checkVisited();
+      res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, error: "Can't add an undefined location..."});
     };
-  } catch (error) {
-    console.log("Error searching for country!");
+  } catch (err) {
+    const countriesVisited = await checkVisited();
+    res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, error: "Search result couldn't find country!"});
   };
-  
-  
-  res.redirect("/");
 });
+
+// app.get("/", async (req, res) => {
+//   //Write your code here.
+//   const result = await db.query("SELECT country_code FROM visited_countries;");
+//   let visitedCountries = [];
+//   // More queries can go here
+//   result.rows.forEach(row => {
+//     visitedCountries.push(row.country_code); // Accessing specific column
+//   });
+//   res.render("index.ejs", {total: visitedCountries.length, countries: visitedCountries });
+// });
+
+// app.post("/add", async (req, res) => {
+//   const searchResult = req.body["country"].toUpperCase();
+//   try {
+//     const result = await db.query("SELECT country_code FROM search_countries WHERE UPPER(country_name) = $1 OR country_code = $1;", [searchResult]);
+//     if (result.rows.length === 1) {
+//       await db.query("INSERT INTO visited_countries (country_code) VALUES ($1);", [result.rows[0].country_code]);
+//     } else {
+//       console.log("Database result length error...");
+//     };
+//   } catch (error) {
+//     console.log("Error searching for country!");
+//   };
+//   res.redirect("/");
+// });
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

@@ -1876,7 +1876,7 @@ db.query("INSERT INTO world_food (country, rice_production, wheat_production) VA
 -----------------------------------------------------------------
 
 async function checkVisited() {
-   const result = await db.query("SELECT country_code FROM visited_countries;");
+  const result = await db.query("SELECT country_code FROM visited_countries;");
   let visitedCountries = [];
   result.rows.forEach(row => {
     visitedCountries.push(row.country_code); // Accessing specific column
