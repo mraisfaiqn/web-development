@@ -63,24 +63,19 @@ app.get("/", async (req, res) => {
 
 app.post("/add", async (req, res) => {
   const searchResult = req.body["country"].toUpperCase();
-  try {
-    const result = await db.query("SELECT country_code FROM search_countries WHERE (UPPER(country_name) = $1 OR country_code = $1;", [searchResult]);
-    console.log(result.rows);
-    if (result.rows.length != 0) {
-      try {
-        await db.query("INSERT INTO visited_countries (country_code) VALUES ($1);", [result.rows[0].country_code]);
-        res.redirect("/");
-      } catch (err) {
-        const countriesVisited = await checkVisited();
-        res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, error: "Country has already been added..."});
-      };    
-    } else {
+  const result = await db.query("SELECT country_code FROM search_countries WHERE UPPER(country_name) = $1 OR country_code = $1;", [searchResult]);
+  console.log(result.rows);
+  if (result.rows.length != 0) {
+    try {
+      await db.query("INSERT INTO visited_countries (country_code) VALUES ($1);", [result.rows[0].country_code]);
+      res.redirect("/");
+    } catch (err) {
       const countriesVisited = await checkVisited();
-      res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, error: "Can't add an undefined location..."});
-    };
-  } catch (err) {
+      res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, error: "Country has already been added..."});
+    };    
+  } else {
     const countriesVisited = await checkVisited();
-    res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, error: "Search result couldn't find country!"});
+    res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, error: "Can't add an undefined location..."});
   };
 });
 

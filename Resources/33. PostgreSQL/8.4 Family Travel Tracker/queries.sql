@@ -39,12 +39,12 @@ VALUES (98, 1), (87, 1), (88, 1)
 SELECT *
 FROM student
 JOIN homework_submission
-ON student.id = student_id
+ON student.id = student_id;
 
 SELECT student.id, first_name, last_name, mark
 FROM student
 JOIN homework_submission
-ON student.id = student_id
+ON student.id = student_id;
 
 -- Many to Many --
 CREATE TABLE class (

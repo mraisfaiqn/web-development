@@ -1741,6 +1741,7 @@ CREATE TABLE orders (
 
 INSERT INTO orders VALUES (1, 4362, 2, 1);
 INSERT INTO orders VALUES (2, 3254, 1, 1);
+INSERT INTO users (firstname, lastname) VALUES ('Joe', 'Cool') RETURNING id;
 
 SELECT orders.order_number, customers.first_name, customers.last_name, customers.address
 FROM orders
@@ -1920,4 +1921,110 @@ process.on('SIGINT', handleGracefulShutdown);
 
 console.log('Application running. Press Ctrl+C to trigger SIGINT and close the DB connection.')
 ```
-- 
+- SQL Relationships
+  - Becareful when naming tables as a plural (students) or singular (student) just make sure its consistent
+  ```
+  CREATE TABLE student (
+    id SERIAL PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT
+  );
+  ```
+  - One to One Relationships & Inner Joins
+    ```
+    
+
+    -- One to One -- NOTE: SQL Commenting -- xx --
+    CREATE TABLE contact_detail (
+      id INTEGER REFERENCES student(id) UNIQUE,
+      tel TEXT,
+      address TEXT
+    );
+
+    -- Data --
+    INSERT INTO student (first_name, last_name)
+    VALUES ('Angela', 'Yu');
+    INSERT INTO contact_detail (id, tel, address)
+    VALUES (1, '+123456789', '123 App Brewery Road');
+
+    -- Join --
+    SELECT * 
+    FROM student
+    JOIN contact_detail
+    ON student.id = contact_detail.id;
+    ```
+  - Many to One Relationships & Inner Joins
+    ```
+    -- Many to One -- NOTE: SQL Commenting -- xx --
+    CREATE TABLE homework_submission (
+      id SERIAL PRIMARY KEY,
+      mark INT,
+      student_id INT REFERENCES student(id)
+    );
+
+    -- Data --
+    INSERT INTO homework_submission (mark, student_id)
+    VALUES (98, 1), (87, 1), (88, 1);
+
+    -- Join --
+    SELECT * 
+    FROM student
+    JOIN homework_submission
+    ON student.id = homework_submission.student_id;
+
+    SELECT student.id, first_name, last_name, mark
+    FROM student
+    JOIN homework_submission
+    ON student.id = student_id;
+    ```
+  - Many to Many Relationships & Aliases
+    - Multiple many to one relationships give you many to many
+    - May need to create a new table to represent that relationship
+    ```
+    -- Many to Many -- NOTE: SQL Commenting -- xx --
+    CREATE TABLE class (
+      id SERIAL PRIMARY KEY,
+      title VARCHAR(45)
+    );
+
+    CREATE TABLE enrollment (
+      student_id INT REFERENCES student(id),
+      class_id INT REFERENCES class(id),
+      PRIMARY KEY (student_id, class_id) -- Ensures the enrollment records dont have duplicates --
+    );
+
+    -- Data --
+    INSERT INTO student (first_name, last_name)
+    VALUES ('Jack', 'Bauer');
+
+    INSERT INTO class (title)
+    VALUES ('English Literature'), ('Maths'), ('Physics');
+
+    INSERT INTO enrollment (student_id, class_id ) VALUES (1, 1), (1, 2);
+    INSERT INTO enrollment (student_id ,class_id) VALUES (2, 2), (2, 3);
+    
+    -- Join --
+    SELECT *
+    FROM enrollment 
+    JOIN student ON student.id = enrollment.student_id
+    JOIN class ON class.id = enrollment.class_id;
+
+    SELECT student.id AS stud, first_name, last_name, title -- Alias (AS) --
+    FROM enrollment 
+    JOIN student ON student.id = enrollment.student_id
+    JOIN class ON class.id = enrollment.class_id;
+    ```
+  - Travel Tracker
+  ```
+  CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(15) UNIQUE NOT NULL,
+    color VARCHAR(15)
+  );
+
+  CREATE TABLE visited_countries(
+    id SERIAL PRIMARY KEY,
+    country_code CHAR(2) NOT NULL,
+    user_id INTEGER REFERENCES users(id)
+  );
+  ```
