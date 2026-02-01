@@ -388,10 +388,15 @@
   </section>
   <h2 class="total-count">Total Countries: <%=total%></h2>
   <script>
-    const country_codes = "<%= countries %>".split(",")
-    console.log(typeof ("<%= countries %>"))
+    let country_codes = "<%= countries %>".split(",");
+    console.log(country_codes);
     country_codes.forEach(code => {
-      document.getElementById(code).style.fill = "<%= color %>"
+      if (document.getElementById(code)){
+        document.getElementById(code).style.fill = "<%= color %>"
+      } else {
+        console.log(code);
+        console.warn("Could not find element with ID:", code);
+      }
     });
   </script>
 </body>

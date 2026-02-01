@@ -50,11 +50,7 @@ let populateUser = 1;
 
 async function currentUser() {
   const result = await db.query("SELECT * FROM users;");
-  let selectUser = [];
-  result.rows.forEach(row => {
-    selectUser.push(row); // Accessing specific column
-  });
-  return selectUser;
+  return result.rows;
 };
 
 async function checkVisited() {
@@ -67,40 +63,35 @@ async function checkVisited() {
 };
 
 app.get("/", async (req, res) => {
-  console.log(populateUser);
   const availableCountries = await currentUser();
   if (availableCountries.length != 0) {
     const countriesVisited = await checkVisited();
-    const foundObject = availableCountries.find(obj => obj.id === populateUser);
-    console.log(foundObject);
-    res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, users: availableCountries, color: foundObject.color });
-  } else {
+    const foundID = availableCountries.find(obj => obj.id === populateUser);
+    res.render("index.ejs", {users: availableCountries, color: foundID.color, total: countriesVisited.length, countries: countriesVisited});
+  } else {                  
     res.render("index.ejs", {users: availableCountries, color: defaultColor, total: availableCountries.length, countries: availableCountries});
   }
 });
 
 app.post("/add", async (req, res) => {
   const userCheck = await currentUser();
+  const countriesVisited = await checkVisited();  
   if (userCheck.length != 0) {
-    const searchInput = req.body["country"].toUpperCase();
-    const result = await db.query("SELECT country_code FROM search_countries WHERE UPPER(country_name) = $1 OR country_code = $1;", [searchInput]);
-    console.log(result.rows);
-    if (result.rows.length != 0) {
+    const searchID = userCheck.find(obj => obj.id === populateUser);
+    const searchCountry = await db.query("SELECT country_code FROM search_countries WHERE UPPER(country_name) = $1 OR country_code = $1;", [req.body["country"].toUpperCase()]);
+    if (searchCountry.rows.length != 0) {
       try {
-        await db.query("INSERT INTO visited_countries (country_code, user_id) VALUES ($1, $2);", [result.rows[0].country_code, populateUser]);
+        await db.query("INSERT INTO visited_countries (country_code, user_id) VALUES ($1, $2);", [searchCountry.rows[0].country_code, populateUser]);
         res.redirect("/");
       } catch (err) {
-        const countriesVisited = await checkVisited();
-        res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, users: users, color: "teal", error: "Country has already been added..."});
-      };    
+        res.render("index.ejs", {error: "Country has already been added...", users: userCheck, color: searchID.color, total: countriesVisited.length, countries: countriesVisited});
+      }
     } else {
-      const countriesVisited = await checkVisited();
-      res.render("index.ejs", {total: countriesVisited.length, countries: countriesVisited, users: users, color: "teal", error: "Can't add an undefined location..."});
+      res.render("index.ejs", {error: "Can't add an undefined location...", users: userCheck, color: searchID.color, total: countriesVisited.length, countries: countriesVisited});      
     };
   } else {
-    res.render("index.ejs", {total: userCheck.length, countries: userCheck, users: userCheck, color: defaultColor, error: "Add a family member first..."});
+    res.render("index.ejs", {error: "Add a family member first...", users: userCheck, color: defaultColor, total: userCheck.length, countries: userCheck});
   }
-  
 });
 
 app.post("/user", async (req, res) => {

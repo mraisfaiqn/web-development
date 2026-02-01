@@ -2025,6 +2025,20 @@ console.log('Application running. Press Ctrl+C to trigger SIGINT and close the D
   CREATE TABLE visited_countries(
     id SERIAL PRIMARY KEY,
     country_code CHAR(2) NOT NULL,
-    user_id INTEGER REFERENCES users(id)
+    user_id INTEGER REFERENCES users(id),
+    UNIQUE (country_code, user_id)
   );
+
+  ALTER TABLE student RENAME TO user;
+  ALTER TABLE user COLUMN first_name TYPE VARCHAR(20);
+  ALTER TABLE contact_detail ADD email TEXT;
+
+  UPDATE table SET column = value WHERE row = 1;
+
+  SELECT * FROM table ORDER BY column ASC;
+  SELECT * FROM table ORDER BY column DESC;
+
+  DELETE FROM table WHERE column = 1;
+
+  DROP TABLE IF EXISTS visited_countries, users;
   ```
