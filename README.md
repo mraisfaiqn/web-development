@@ -2042,3 +2042,7 @@ console.log('Application running. Press Ctrl+C to trigger SIGINT and close the D
 
   DROP TABLE IF EXISTS visited_countries, users;
   ```
+  - To-do List Upgrades:
+    - Sort by creation date
+    - Multiple Lists (Today, Week, Month) Relationships
+    - Family To-do Lists
